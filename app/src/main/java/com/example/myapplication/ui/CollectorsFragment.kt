@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.artist
+package com.example.myapplication.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.databinding.FragmentArtistBinding
+import com.example.myapplication.databinding.FragmentCollectorsBinding
+import com.example.myapplication.viewmodels.CollectorsViewModel
 
-class ArtistFragment : Fragment() {
+class CollectorsFragment : Fragment() {
 
-    private var _binding: FragmentArtistBinding? = null
+    private var _binding: FragmentCollectorsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,14 +23,14 @@ class ArtistFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val artistViewModel =
-            ViewModelProvider(this).get(ArtistViewModel::class.java)
+        val collectorsViewModel =
+            ViewModelProvider(this).get(CollectorsViewModel::class.java)
 
-        _binding = FragmentArtistBinding.inflate(inflater, container, false)
+        _binding = FragmentCollectorsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        artistViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textDashboard
+        collectorsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root

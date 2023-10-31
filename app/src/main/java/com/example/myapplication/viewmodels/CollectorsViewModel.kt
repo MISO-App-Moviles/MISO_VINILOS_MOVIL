@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.collectors
+package com.example.myapplication.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

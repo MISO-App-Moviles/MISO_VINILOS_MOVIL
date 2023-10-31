@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.album
+package com.example.myapplication.ui
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.myapplication.databinding.FragmentAlbumListBinding
+import com.example.myapplication.viewmodels.AlbumListViewModel
 
 class AlbumListFragment : Fragment() {
 
