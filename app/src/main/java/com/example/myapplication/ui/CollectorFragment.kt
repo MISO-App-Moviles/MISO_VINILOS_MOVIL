@@ -8,9 +8,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.FragmentCollectorsBinding
-import com.example.myapplication.viewmodels.CollectorsViewModel
+import com.example.myapplication.viewmodels.CollectorViewModel
 
-class CollectorsFragment : Fragment() {
+class CollectorFragment : Fragment() {
 
     private var _binding: FragmentCollectorsBinding? = null
 
@@ -24,7 +24,7 @@ class CollectorsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val collectorsViewModel =
-            ViewModelProvider(this).get(CollectorsViewModel::class.java)
+            ViewModelProvider(this).get(CollectorViewModel::class.java)
 
         _binding = FragmentCollectorsBinding.inflate(inflater, container, false)
         val root: View = binding.root

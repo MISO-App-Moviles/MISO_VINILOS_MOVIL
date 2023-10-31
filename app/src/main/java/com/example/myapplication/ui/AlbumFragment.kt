@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.myapplication.databinding.FragmentAlbumListBinding
-import com.example.myapplication.viewmodels.AlbumListViewModel
+import com.example.myapplication.viewmodels.AlbumViewModel
 
-class AlbumListFragment : Fragment() {
+class AlbumFragment : Fragment() {
 
     private var _binding: FragmentAlbumListBinding? = null
     // This property is only valid between onCreateView and
@@ -23,7 +23,7 @@ class AlbumListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val albumListViewModel =
-            ViewModelProvider(this).get(AlbumListViewModel::class.java)
+            ViewModelProvider(this).get(AlbumViewModel::class.java)
 
         _binding = FragmentAlbumListBinding.inflate(inflater, container, false)
         val root: View = binding.root
