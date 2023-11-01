@@ -1,9 +1,9 @@
-package com.example.myapplication.repository
+package com.example.myapplication.model.repository
 
 import android.app.Application
 import com.android.volley.VolleyError
-import com.example.myapplication.models.Album
-import com.example.myapplication.network.AlbumServiceAdapter
+import com.example.myapplication.model.models.Album
+import com.example.myapplication.model.serviceAdapter.AlbumServiceAdapter
 
 class AlbumRepository(val application: Application) {
 

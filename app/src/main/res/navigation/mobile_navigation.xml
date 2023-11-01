@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_album_list"
-        android:name="com.example.myapplication.ui.AlbumFragment"
+        android:name="com.example.myapplication.view.AlbumFragment"
         android:label="@string/title_album_list"
         tools:layout="@layout/fragment_album_list" />
 
     <fragment
         android:id="@+id/navigation_collectors"
-        android:name="com.example.myapplication.ui.CollectorFragment"
+        android:name="com.example.myapplication.view.CollectorFragment"
         android:label="@string/title_collectors"
         tools:layout="@layout/fragment_collectors" />
 
     <fragment
         android:id="@+id/navigation_artist"
-        android:name="com.example.myapplication.ui.ArtistFragment"
+        android:name="com.example.myapplication.view.ArtistFragment"
         android:label="@string/title_artist"
         tools:layout="@layout/fragment_artist" />
 

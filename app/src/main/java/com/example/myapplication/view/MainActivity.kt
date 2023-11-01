@@ -1,4 +1,4 @@
-package com.example.myapplication.ui
+package com.example.myapplication.view
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView

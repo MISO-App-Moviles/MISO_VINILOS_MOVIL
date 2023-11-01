@@ -1,4 +1,4 @@
-package com.example.myapplication.ui
+package com.example.myapplication.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.FragmentArtistBinding
-import com.example.myapplication.viewmodels.ArtistViewModel
+import com.example.myapplication.viewModel.ArtistViewModel
 
 class ArtistFragment : Fragment() {
 

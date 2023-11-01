@@ -1,9 +1,9 @@
-package com.example.myapplication.viewmodels
+package com.example.myapplication.viewModel
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.myapplication.models.Album
-import com.example.myapplication.repository.AlbumRepository
+import com.example.myapplication.model.models.Album
+import com.example.myapplication.model.repository.AlbumRepository
 
 class AlbumViewModel(application: Application) : AndroidViewModel(application) {
 

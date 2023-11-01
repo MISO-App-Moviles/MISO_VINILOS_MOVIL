@@ -1,15 +1,13 @@
-package com.example.myapplication.network
+package com.example.myapplication.model.serviceAdapter
 
 import android.content.Context
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.myapplication.models.Album
+import com.example.myapplication.model.models.Album
 import org.json.JSONArray
 
 class AlbumServiceAdapter constructor(context: Context){
@@ -45,7 +43,7 @@ class AlbumServiceAdapter constructor(context: Context){
     }
 
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
-        return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
+        return StringRequest(Request.Method.GET, BASE_URL +path, responseListener,errorListener)
     }
 
 
