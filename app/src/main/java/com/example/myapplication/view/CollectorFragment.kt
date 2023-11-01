@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.databinding.FragmentCollectorsBinding
+import com.example.myapplication.databinding.CollectorFragmentBinding
 import com.example.myapplication.viewModel.CollectorViewModel
 
 class CollectorFragment : Fragment() {
 
-    private var _binding: FragmentCollectorsBinding? = null
+    private var _binding: CollectorFragmentBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -26,7 +26,7 @@ class CollectorFragment : Fragment() {
         val collectorsViewModel =
             ViewModelProvider(this).get(CollectorViewModel::class.java)
 
-        _binding = FragmentCollectorsBinding.inflate(inflater, container, false)
+        _binding = CollectorFragmentBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textDashboard
