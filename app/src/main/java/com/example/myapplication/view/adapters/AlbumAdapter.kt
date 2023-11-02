@@ -2,10 +2,12 @@ package com.example.myapplication.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.databinding.AlbumItemBinding
 import com.example.myapplication.model.models.Album
@@ -39,6 +41,9 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
         holder.viewDataBinding.also {
             it.album = albums[position]
+            Glide.with(holder.itemView.getContext())
+                .load(albums[position].cover)
+                .into(holder.viewDataBinding.imageView);
         }
 //        holder.viewDataBinding.root.setOnClickListener {
 //            val action = AlbumFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)
