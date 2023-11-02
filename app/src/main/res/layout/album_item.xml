@@ -51,7 +51,9 @@
                         android:paddingBottom="3dp"
                         android:text="@{album.name}"
                         android:textStyle="bold"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp"
+                        android:ellipsize="end"
+                        android:maxLines="1"/>
 
                     <TextView
                         android:id="@+id/textView"
@@ -74,7 +76,9 @@
                         android:paddingTop="2dp"
                         android:paddingEnd="2dp"
                         android:paddingBottom="3dp"
-                        android:text="@{album.genre}" />
+                        android:text="@{album.genre}"/>
+
+
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
