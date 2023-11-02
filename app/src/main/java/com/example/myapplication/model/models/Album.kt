@@ -1,5 +1,6 @@
 package com.example.myapplication.model.models
 
+import com.example.myapplication.utils.DateUtil
 import org.json.JSONObject
 
 data class Album (
@@ -15,7 +16,7 @@ data class Album (
         albumId?.optInt("id") ?: 0,
         albumId?.optString("name") ?: "",
         albumId?.optString("cover") ?: "",
-        albumId?.optString("releaseDate") ?: "",
+        DateUtil.format(albumId?.optString("releaseDate") ?: ""),
         albumId?.optString("description") ?: "",
         albumId?.optString("genre") ?: "",
         albumId?.optString("recordLabel") ?: ""
