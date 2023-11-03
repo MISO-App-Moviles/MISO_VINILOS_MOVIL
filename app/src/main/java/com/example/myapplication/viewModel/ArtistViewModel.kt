@@ -15,7 +15,7 @@ class ArtistViewModel(application: Application) : AndroidViewModel(application) 
 
     //Artists
     private val _artists = MutableLiveData<List<Artist>>()
-    val albums: LiveData<List<Artist>>
+    val artists: LiveData<List<Artist>>
         get() = _artists
 
     //Event network
