@@ -40,7 +40,7 @@ class ArtistAdapter : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>(){
             it.artist = Artists[position]
             Glide.with(holder.itemView.getContext())
                 .load(Artists[position].image)
-                .into(holder.viewDataBinding.imageView);
+                .into(holder.viewDataBinding.ivImage);
         }
 //        holder.viewDataBinding.root.setOnClickListener {
 //            val action = ArtistFragmentDirections.actionArtistFragmentToCommentFragment(Artists[position].ArtistId)

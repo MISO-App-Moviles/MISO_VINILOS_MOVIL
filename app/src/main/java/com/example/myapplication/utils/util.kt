@@ -13,8 +13,8 @@ object DateUtil {
 }
 
 object ImageUtil {
-    fun getImage(imagen: String): Comparable<*> {
+    fun getImage(image: String): Comparable<*> {
         val extensions = listOf("jpg","jpeg","png","gif","bmp","webp","tiff","svg","ico")
-        return if (extensions.contains(imagen.substringAfterLast(".").lowercase())) imagen else R.drawable.ic_no_image
+        return if (extensions.contains(image.substringAfterLast(".").lowercase())) image else R.drawable.ic_no_image
     }
 }

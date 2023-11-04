@@ -33,7 +33,7 @@ class ArtistServiceAdapter constructor(context: Context) {
     fun getArtists(onComplete:(resp:List<Artist>)->Unit, onError:(error: VolleyError)->Unit){
         requestQueue.add(
             getRequest(
-                "artists",
+                "musicians",
                 Response.Listener<String> { response ->
                     val resp = JSONArray(response)
                     val list = mutableListOf<Artist>()
