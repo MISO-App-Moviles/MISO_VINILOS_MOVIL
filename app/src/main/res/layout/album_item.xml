@@ -28,7 +28,7 @@
                 android:padding="16dp">
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/albumCover"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     app:shapeAppearanceOverlay="@style/circularImageShape"
@@ -41,7 +41,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/collectorName"
+                        android:id="@+id/albumName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -56,7 +56,7 @@
                         android:maxLines="1"/>
 
                     <TextView
-                        android:id="@+id/collectorEmail"
+                        android:id="@+id/albumReleaseDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -68,7 +68,7 @@
                         android:textStyle="normal" />
 
                     <TextView
-                        android:id="@+id/collectorTelephone"
+                        android:id="@+id/albumGenre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

@@ -43,7 +43,7 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
             it.album = albums[position]
             Glide.with(holder.itemView.getContext())
                 .load(albums[position].cover)
-                .into(holder.viewDataBinding.imageView);
+                .into(holder.viewDataBinding.albumCover);
         }
 //        holder.viewDataBinding.root.setOnClickListener {
 //            val action = AlbumFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)

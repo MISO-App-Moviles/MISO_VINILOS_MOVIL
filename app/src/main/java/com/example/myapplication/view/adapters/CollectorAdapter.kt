@@ -44,7 +44,7 @@ class CollectorAdapter: RecyclerView.Adapter<CollectorAdapter.CollectorViewHolde
             it.collector = collectors[position]
             Glide.with(holder.itemView.getContext())
                 .load(R.drawable.icon_person)
-                .into(holder.viewDataBinding.imageView);
+                .into(holder.viewDataBinding.collectorAvatar);
         }
     }
 }
