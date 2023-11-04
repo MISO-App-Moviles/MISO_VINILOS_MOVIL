@@ -21,8 +21,8 @@ class AlbumListTest {
     companion object {
         const val NAVIGATION_ARTIST_TAB = "Artistas"
         const val NAVIGATION_ALBUM_TAB = "Albums"
-        const val ALBUM_NAME = "Buscando América"
-        const val RELEASE_DATE = "1984-08-01"
+        const val ALBUM_NAME = "Poeta del Pueblo"
+        const val RELEASE_DATE = "2011-08-01"
         const val GENRE = "Salsa"
         const val TITLE = "Albums"
     }

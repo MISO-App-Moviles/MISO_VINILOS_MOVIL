@@ -22,8 +22,8 @@ class ArtistListTest {
     companion object {
         const val NAVIGATION_ARTIST_TAB = "Artistas"
         const val NAVIGATION_COLLECTOR_TAB = "Coleccionistas"
-        const val ARTIST_NAME = "Rubén Blades Bellido de Luna"
-        const val ARTIST_DESCRIPTION = "Es un cantante, compositor, músico, actor, abogado, político y activista panameño. Ha desarrollado gran parte de su carrera artística en la ciudad de Nueva York."
+        const val ARTIST_NAME = "Joan Manuel Serrat Teresa"
+        const val ARTIST_DESCRIPTION = "Es un cantautor, compositor, actor, escritor, poeta y músico español."
         const val TITLE = "Artistas"
     }
 
