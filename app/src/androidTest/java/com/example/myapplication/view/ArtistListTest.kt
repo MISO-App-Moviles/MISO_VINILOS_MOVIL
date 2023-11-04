@@ -17,15 +17,14 @@ import org.junit.Test
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class CollectorListTest {
+class ArtistListTest {
 
     companion object {
         const val NAVIGATION_ARTIST_TAB = "Artistas"
         const val NAVIGATION_COLLECTOR_TAB = "Coleccionistas"
-        const val COLLECTOR_NAME = "Jaime Andrés Monsalve"
-        const val COLLECTOR_TELEPHONE = "3102178976"
-        const val COLLECTOR_EMAIL = "j.monsalve@gmail.com"
-        const val TITLE = "Coleccionistas"
+        const val ARTIST_NAME = "Rubén Blades Bellido de Luna"
+        const val ARTIST_DESCRIPTION = "Es un cantante, compositor, músico, actor, abogado, político y activista panameño. Ha desarrollado gran parte de su carrera artística en la ciudad de Nueva York."
+        const val TITLE = "Artistas"
     }
 
     @Rule
@@ -34,15 +33,14 @@ class CollectorListTest {
     @Test
     fun testFirstCollectorDetails() {
         Thread.sleep(1000)
-        clickBottomNavigationItem(R.id.navigation_artist, NAVIGATION_ARTIST_TAB)
         clickBottomNavigationItem(R.id.navigation_collectors, NAVIGATION_COLLECTOR_TAB)
+        clickBottomNavigationItem(R.id.navigation_artist, NAVIGATION_ARTIST_TAB)
 
         checkHeaderTitle(TITLE)
 
         Thread.sleep(2000)
-        checkItemInRecyclerView(R.id.collectorRv, 0, R.id.collectorAvatar)
-        checkItemInRecyclerView(R.id.collectorRv, 0, R.id.collectorName, COLLECTOR_NAME)
-        checkItemInRecyclerView(R.id.collectorRv, 0, R.id.collectorEmail, COLLECTOR_EMAIL)
-        checkItemInRecyclerView(R.id.collectorRv, 0, R.id.collectorTelephone, COLLECTOR_TELEPHONE)
+        checkItemInRecyclerView(R.id.artistRv, 0, R.id.artistImage)
+        checkItemInRecyclerView(R.id.artistRv, 0, R.id.artistName, ARTIST_NAME)
+        checkItemInRecyclerView (R.id.artistRv, 0, R.id.artistDescription, ARTIST_DESCRIPTION)
     }
 }
