@@ -22,6 +22,7 @@
             android:layout_marginBottom="8dp">
 
             <LinearLayout
+                android:id="@+id/outerLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -36,6 +37,7 @@
                 <!-- Agregamos un fondo circular a la ImageView -->
 
                 <LinearLayout
+                    android:id="@+id/innerLinearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
