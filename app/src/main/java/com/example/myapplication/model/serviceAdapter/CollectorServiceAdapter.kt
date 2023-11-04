@@ -19,7 +19,6 @@ class CollectorServiceAdapter constructor(context: Context) {
     }
 
     companion object{
-        const val BASE_URL= "https://vynils-back-heroku.herokuapp.com/"
         var instance: CollectorServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {

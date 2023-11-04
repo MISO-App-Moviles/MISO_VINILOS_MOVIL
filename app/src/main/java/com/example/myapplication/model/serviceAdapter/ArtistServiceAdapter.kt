@@ -17,7 +17,6 @@ class ArtistServiceAdapter constructor(context: Context) {
 
     //Obtiene una instancia de este mismo service adapeter
     companion object{
-        const val BASE_URL= "https://vynils-back-heroku.herokuapp.com/"
         var instance: ArtistServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
