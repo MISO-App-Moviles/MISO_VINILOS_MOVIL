@@ -2,8 +2,10 @@ package com.example.myapplication.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
@@ -20,7 +22,7 @@ class ArtistAdapter : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>(){
         }
     }
 
-    var Artists :List<Artist> = emptyList()
+    var artists :List<Artist> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -37,9 +39,9 @@ class ArtistAdapter : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>(){
 
     override fun onBindViewHolder(holder: ArtistViewHolder, position: Int) {
         holder.viewDataBinding.also {
-            it.artist = Artists[position]
+            it.artist = artists[position]
             Glide.with(holder.itemView.getContext())
-                .load(Artists[position].image)
+                .load(artists[position].image)
                 .into(holder.viewDataBinding.ivImage);
         }
 //        holder.viewDataBinding.root.setOnClickListener {
@@ -50,6 +52,6 @@ class ArtistAdapter : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>(){
     }
 
     override fun getItemCount(): Int {
-        return Artists.size
+        return artists.size
     }
 }

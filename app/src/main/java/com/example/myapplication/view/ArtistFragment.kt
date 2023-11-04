@@ -19,7 +19,9 @@ class ArtistFragment : Fragment() {
 
     private var _binding: ArtistFragmentBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var recyclerView: RecyclerView
+
     private lateinit var viewModel: ArtistViewModel
     private var viewModelAdapter: ArtistAdapter? = null
 
@@ -48,7 +50,7 @@ class ArtistFragment : Fragment() {
             ArtistViewModel::class.java)
         viewModel.artists.observe(viewLifecycleOwner, Observer<List<Artist>> {
             it.apply {
-                viewModelAdapter!!.Artists = this
+                viewModelAdapter!!.artists = this
             }
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
