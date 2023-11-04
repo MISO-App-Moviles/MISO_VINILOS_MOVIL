@@ -24,9 +24,9 @@ class CollectorListTest {
     companion object {
         const val NAVIGATION_ARTIST_TAB = "Artistas"
         const val NAVIGATION_COLLECTOR_TAB = "Coleccionistas"
-        const val COLLECTOR_NAME = "Manolo Bellon"
-        const val COLLECTOR_TELEPHONE = "3502457896"
-        const val COLLECTOR_EMAIL = "manollo@caracol.com.co"
+        const val COLLECTOR_NAME = "Jaime Andrés Monsalve"
+        const val COLLECTOR_TELEPHONE = "3102178976"
+        const val COLLECTOR_EMAIL = "j.monsalve@gmail.com"
         const val TITLE = "Coleccionistas"
     }
 
