@@ -17,7 +17,7 @@ class AlbumServiceAdapter constructor(context: Context){
     }
 
     companion object{
-        const val BASE_URL= "https://vynils-back-heroku.herokuapp.com/"
+        const val BASE_URL= "http://34.27.14.42:3000/"
         var instance: AlbumServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
