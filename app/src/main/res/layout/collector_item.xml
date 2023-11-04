@@ -41,7 +41,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/collectorName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -56,7 +56,7 @@
                         android:maxLines="1"/>
 
                     <TextView
-                        android:id="@+id/textView"
+                        android:id="@+id/collectorEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -68,7 +68,7 @@
                         android:textStyle="normal" />
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/collectorTelephone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
