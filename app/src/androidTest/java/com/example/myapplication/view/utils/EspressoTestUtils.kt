@@ -6,17 +6,19 @@ import androidx.test.espresso.matcher.BoundedMatcher
 import org.hamcrest.Description
 import org.hamcrest.TypeSafeMatcher
 import android.view.View
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.espresso.action.ViewActions.click
 import org.hamcrest.Matcher
+import org.hamcrest.Matchers
 import org.hamcrest.Matchers.allOf
 
 object EspressoTestUtils {
 
-    fun clickBottomNavigationItem(itemId: Int, contentDesc: String) {
-        onView(allOf(withId(itemId), withContentDescription(contentDesc), isDisplayed())).perform(
+    fun clickBottomNavigationItem(itemId: Int, navigationTab: String) {
+        onView(allOf(withId(itemId), withContentDescription(navigationTab), isDisplayed())).perform(
             click()
         )
     }
@@ -66,5 +68,20 @@ object EspressoTestUtils {
                 return viewHolder != null && itemMatcher.matches(viewHolder.itemView)
             }
         }
+    }
+
+    fun checkHeaderTitle(title: String){
+        val textView = Espresso.onView(
+            Matchers.allOf(
+                withParent(
+                    Matchers.allOf(
+                        withId(androidx.appcompat.R.id.action_bar),
+                        withParent(withId(androidx.appcompat.R.id.action_bar_container))
+                    )
+                ),
+                isDisplayed()
+            )
+        )
+        textView.check(matches(withText(title)))
     }
 }
