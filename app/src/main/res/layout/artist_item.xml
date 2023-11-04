@@ -27,7 +27,7 @@
                 android:padding="16dp">
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/ivImage"
+                    android:id="@+id/artistImage"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     app:shapeAppearanceOverlay="@style/circularImageShape"
@@ -39,7 +39,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txtName"
+                        android:id="@+id/artistName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -54,7 +54,7 @@
                         android:maxLines="1"/>
 
                      <TextView
-                        android:id="@+id/txtDescription"
+                        android:id="@+id/artistDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
