@@ -12,7 +12,6 @@ import org.json.JSONArray
 
 class AlbumServiceAdapter constructor(context: Context){
     private val requestQueue: RequestQueue by lazy {
-        // applicationContext keeps you from leaking the Activity or BroadcastReceiver if someone passes one in.
         Volley.newRequestQueue(context.applicationContext)
     }
 
@@ -45,6 +44,4 @@ class AlbumServiceAdapter constructor(context: Context){
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL +path, responseListener,errorListener)
     }
-
-
 }

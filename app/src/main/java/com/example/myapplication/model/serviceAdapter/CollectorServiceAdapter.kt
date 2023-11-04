@@ -7,7 +7,6 @@ import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.myapplication.model.models.Album
 import com.example.myapplication.model.models.Collector
 import org.json.JSONArray
 

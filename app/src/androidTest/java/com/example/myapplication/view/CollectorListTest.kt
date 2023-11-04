@@ -1,6 +1,5 @@
 package com.example.myapplication.view
 
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.*
@@ -14,7 +13,6 @@ import com.example.myapplication.view.utils.EspressoTestUtils.clickBottomNavigat
 import com.example.myapplication.view.utils.EspressoTestUtils.checkItemInRecyclerView
 import com.example.myapplication.view.utils.EspressoTestUtils.checkHeaderTitle
 
-import org.hamcrest.Matchers
 import org.junit.Test
 
 @LargeTest
