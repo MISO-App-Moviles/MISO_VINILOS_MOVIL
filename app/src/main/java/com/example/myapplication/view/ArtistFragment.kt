@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.artist
+package com.example.myapplication.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.databinding.FragmentArtistBinding
+import com.example.myapplication.databinding.ArtistFragmentBinding
+import com.example.myapplication.viewModel.ArtistViewModel
 
 class ArtistFragment : Fragment() {
 
-    private var _binding: FragmentArtistBinding? = null
+    private var _binding: ArtistFragmentBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,7 +26,7 @@ class ArtistFragment : Fragment() {
         val artistViewModel =
             ViewModelProvider(this).get(ArtistViewModel::class.java)
 
-        _binding = FragmentArtistBinding.inflate(inflater, container, false)
+        _binding = ArtistFragmentBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textHome
