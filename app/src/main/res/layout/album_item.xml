@@ -22,6 +22,7 @@
             android:layout_marginBottom="8dp">
 
             <LinearLayout
+                android:id="@+id/outerLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -32,10 +33,12 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     app:shapeAppearanceOverlay="@style/circularImageShape"
-                    app:srcCompat="@drawable/ic_no_image" />
+                    app:srcCompat="@drawable/ic_no_image"
+                    android:scaleType="centerCrop" />
                 <!-- Agregamos un fondo circular a la ImageView -->
 
                 <LinearLayout
+                    android:id="@+id/innerLinearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -53,7 +56,8 @@
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:ellipsize="end"
-                        android:maxLines="1"/>
+                        android:maxLines="1"
+                        android:textColor="@color/title"/>
 
                     <TextView
                         android:id="@+id/albumReleaseDate"
@@ -65,7 +69,8 @@
                         android:paddingEnd="2dp"
                         android:paddingBottom="0.5dp"
                         android:text="@{album.releaseDate}"
-                        android:textStyle="normal" />
+                        android:textStyle="normal"
+                        android:textColor="@color/text"/>
 
                     <TextView
                         android:id="@+id/albumGenre"
@@ -76,6 +81,7 @@
                         android:paddingTop="0.5dp"
                         android:paddingEnd="2dp"
                         android:paddingBottom="0.5dp"
+                        android:textColor="@color/text"
                         android:text="@{album.genre}"/>
 
 
