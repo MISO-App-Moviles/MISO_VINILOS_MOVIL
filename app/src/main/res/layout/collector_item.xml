@@ -45,10 +45,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingStart="15dp"
-                        android:paddingTop="3dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="0.5dp"
                         android:paddingEnd="8dp"
-                        android:paddingBottom="3dp"
+                        android:paddingBottom="0.5dp"
                         android:text="@{collector.name}"
                         android:textStyle="bold"
                         android:textSize="18sp"
@@ -60,10 +60,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingStart="15dp"
-                        android:paddingTop="3dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="0.5dp"
                         android:paddingEnd="2dp"
-                        android:paddingBottom="2dp"
+                        android:paddingBottom="0.5dp"
                         android:text="@{collector.email}"
                         android:textStyle="normal" />
 
@@ -72,10 +72,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingStart="15dp"
-                        android:paddingTop="2dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="0.5dp"
                         android:paddingEnd="2dp"
-                        android:paddingBottom="3dp"
+                        android:paddingBottom="0.5dp"
                         android:text="@{collector.telephone}"/>
 
 
