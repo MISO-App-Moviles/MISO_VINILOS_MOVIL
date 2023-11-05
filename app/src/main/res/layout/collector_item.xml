@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="album" type="com.example.myapplication.model.models.Album" />
+        <variable name="collector" type="com.example.myapplication.model.models.Collector" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,29 +22,26 @@
             android:layout_marginBottom="8dp">
 
             <LinearLayout
-                android:id="@+id/outerLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp">
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/albumCover"
+                    android:id="@+id/collectorAvatar"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     app:shapeAppearanceOverlay="@style/circularImageShape"
-                    app:srcCompat="@drawable/ic_no_image"
-                    android:scaleType="centerCrop" />
+                    app:srcCompat="@drawable/ic_no_image" />
                 <!-- Agregamos un fondo circular a la ImageView -->
 
                 <LinearLayout
-                    android:id="@+id/innerLinearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/albumName"
+                        android:id="@+id/collectorName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -52,7 +49,7 @@
                         android:paddingTop="0.5dp"
                         android:paddingEnd="8dp"
                         android:paddingBottom="0.5dp"
-                        android:text="@{album.name}"
+                        android:text="@{collector.name}"
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:ellipsize="end"
@@ -60,7 +57,7 @@
                         android:textColor="@color/title"/>
 
                     <TextView
-                        android:id="@+id/albumReleaseDate"
+                        android:id="@+id/collectorEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -68,12 +65,12 @@
                         android:paddingTop="0.5dp"
                         android:paddingEnd="2dp"
                         android:paddingBottom="0.5dp"
-                        android:text="@{album.releaseDate}"
+                        android:text="@{collector.email}"
                         android:textStyle="normal"
                         android:textColor="@color/text"/>
 
                     <TextView
-                        android:id="@+id/albumGenre"
+                        android:id="@+id/collectorTelephone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -81,8 +78,8 @@
                         android:paddingTop="0.5dp"
                         android:paddingEnd="2dp"
                         android:paddingBottom="0.5dp"
-                        android:textColor="@color/text"
-                        android:text="@{album.genre}"/>
+                        android:text="@{collector.telephone}"
+                        android:textColor="@color/text"/>
 
 
                 </LinearLayout>
