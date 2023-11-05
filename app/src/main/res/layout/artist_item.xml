@@ -31,7 +31,8 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     app:shapeAppearanceOverlay="@style/circularImageShape"
-                    app:srcCompat="@drawable/ic_no_image" />
+                    app:srcCompat="@drawable/ic_no_image"
+                    android:scaleType="centerCrop"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -51,9 +52,10 @@
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:ellipsize="end"
-                        android:maxLines="1"/>
+                        android:maxLines="1"
+                        android:textColor="@color/title"/>
 
-                     <TextView
+                    <TextView
                         android:id="@+id/artistDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -63,8 +65,9 @@
                         android:paddingEnd="0.5dp"
                         android:paddingBottom="0.5dp"
                         android:text="@{artist.description}"
-                         android:ellipsize="end"
-                         android:maxLines="2"/>
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:textColor="@color/text"/>
 
 
                 </LinearLayout>
