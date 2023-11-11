@@ -8,7 +8,9 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.myapplication.model.models.Album
+import com.example.myapplication.model.models.AlbumDetail
 import org.json.JSONArray
+import org.json.JSONObject
 
 class AlbumServiceAdapter constructor(context: Context){
     private val requestQueue: RequestQueue by lazy {
@@ -37,6 +39,17 @@ class AlbumServiceAdapter constructor(context: Context){
                 onComplete(list)
             },
             Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
+    fun getAlbumDetail(idAlbum: Int, onComplete: (resp: AlbumDetail) -> Unit, onError: (error: VolleyError) -> Unit){
+        requestQueue.add(getRequest("albums/$idAlbum",
+            Response.Listener<String>{ response ->
+                val albumDetail = AlbumDetail(JSONObject(response))
+                onComplete(albumDetail)
+            },
+            Response.ErrorListener{
                 onError(it)
             }))
     }

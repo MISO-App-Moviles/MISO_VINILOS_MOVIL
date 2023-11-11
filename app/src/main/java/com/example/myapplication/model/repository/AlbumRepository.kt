@@ -3,6 +3,7 @@ package com.example.myapplication.model.repository
 import android.app.Application
 import com.android.volley.VolleyError
 import com.example.myapplication.model.models.Album
+import com.example.myapplication.model.models.AlbumDetail
 import com.example.myapplication.model.serviceAdapter.AlbumServiceAdapter
 
 class AlbumRepository(val application: Application) {
@@ -15,5 +16,12 @@ class AlbumRepository(val application: Application) {
         },
             onError
         )
+    }
+
+    fun refreshDetailData(idAlbum: Int, callback: (AlbumDetail) -> Unit, onError: (VolleyError)->Unit){
+        AlbumServiceAdapter.getInstance(application).getAlbumDetail(idAlbum, {
+            callback(it)
+        },
+            onError)
     }
 }
