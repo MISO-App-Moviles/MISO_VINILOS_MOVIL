@@ -2,10 +2,8 @@ package com.example.myapplication.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
@@ -44,11 +42,10 @@ class ArtistAdapter : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>(){
                 .load(artists[position].image)
                 .into(holder.viewDataBinding.artistImage);
         }
-//        holder.viewDataBinding.root.setOnClickListener {
-//            val action = ArtistFragmentDirections.actionArtistFragmentToCommentFragment(Artists[position].ArtistId)
-//            // Navigate using that action
-//            holder.viewDataBinding.root.findNavController().navigate(action)
-//        }
+    //holder.viewDataBinding.root.setOnClickListener {
+    //    val action = ArtistDetailFragmentDirections.action_artistFragment_to_artistDetailFragment(artists[position].id)
+    //    holder.viewDataBinding.root.findNavController().navigate(action)
+    //}
     }
 
     override fun getItemCount(): Int {

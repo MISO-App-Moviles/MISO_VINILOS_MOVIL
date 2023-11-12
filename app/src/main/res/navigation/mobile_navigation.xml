@@ -21,6 +21,24 @@
         android:id="@+id/navigation_artist"
         android:name="com.example.myapplication.view.ArtistFragment"
         android:label="@string/title_artist"
-        tools:layout="@layout/artist_fragment" />
+        tools:layout="@layout/artist_fragment">
+
+        <!-- Detail -->
+        <fragment
+            android:id="@+id/fragment_artist_detail"
+            android:name="com.example.myapplication.view.ArtistDetailFragment"
+            android:label="fragment_artist_detail"
+            tools:layout="@layout/artist_detail_fragment">
+            <argument
+                android:name="artistId"
+                app:argType="integer" />
+        </fragment>
+
+        <!-- Acción para navegar de la Lista al Detalle -->
+        <action
+            android:id="@+id/action_artistFragment_to_artistDetailFragment"
+            app:destination="@id/fragment_artist_detail" />
+
+    </fragment>
 
 </navigation>

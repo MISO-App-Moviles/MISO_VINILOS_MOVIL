@@ -8,7 +8,9 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.myapplication.model.models.Artist
+import com.example.myapplication.model.models.ArtistDetail
 import org.json.JSONArray
+import org.json.JSONObject
 
 class ArtistServiceAdapter constructor(context: Context) {
     private val requestQueue: RequestQueue by lazy {
@@ -46,6 +48,17 @@ class ArtistServiceAdapter constructor(context: Context) {
                 }
             )
         )
+    }
+
+    fun getArtistDetail(idMusician: Int, onComplete: (resp:ArtistDetail) -> Unit, onError: (error: VolleyError) -> Unit){
+        requestQueue.add(getRequest("musicians/$idMusician",
+            Response.Listener<String>{ response ->
+                val artistDetail = ArtistDetail(JSONObject(response))
+                onComplete(artistDetail)
+            },
+            Response.ErrorListener{
+                onError(it)
+            }))
     }
 
     /**
