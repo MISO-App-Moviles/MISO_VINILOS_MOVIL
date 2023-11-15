@@ -18,7 +18,7 @@ class AlbumServiceAdapter constructor(context: Context){
     }
 
     companion object{
-        const val BASE_URL= "http://34.27.14.42:3000/"
+        const val BASE_URL= "http://34.123.253.204:3000/"
         var instance: AlbumServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {

@@ -1,5 +1,6 @@
 package com.example.myapplication.model.models
 
+import com.example.myapplication.utils.DateUtil
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -19,7 +20,7 @@ data class AlbumDetail(
         albumDetail?.optInt("id") ?: 0,
         albumDetail?.optString("name"),
         albumDetail?.optString("cover"),
-        albumDetail?.optString("releaseDate"),
+        DateUtil.format(albumDetail?.optString("releaseDate") ?: ""),
         albumDetail?.optString("description"),
         albumDetail?.optString("genre"),
         albumDetail?.optString("recordLabel"),
