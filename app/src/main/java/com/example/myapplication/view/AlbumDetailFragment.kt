@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
@@ -18,7 +20,9 @@ import com.example.myapplication.databinding.AlbumDetailFragmentBinding
 import com.example.myapplication.databinding.AlbumFragmentBinding
 import com.example.myapplication.model.models.Album
 import com.example.myapplication.model.models.AlbumDetail
+import com.example.myapplication.model.models.Track
 import com.example.myapplication.view.adapters.AlbumAdapter
+import com.example.myapplication.view.adapters.TrackAdapter
 import com.example.myapplication.viewModel.AlbumDetailViewModel
 import com.example.myapplication.viewModel.AlbumViewModel
 
@@ -28,17 +32,24 @@ import com.example.myapplication.viewModel.AlbumViewModel
  * create an instance of this fragment.
  */
 class AlbumDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var albumId: Int? = null
     private var _binding: AlbumDetailFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: AlbumDetailViewModel
+    private var trackAdapter: TrackAdapter? = null
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             albumId = it.getInt("albumId")
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        recyclerView = binding.trackRv
+        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.adapter = trackAdapter
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -48,11 +59,27 @@ class AlbumDetailFragment : Fragment() {
         }
         viewModel = ViewModelProvider(this, AlbumDetailViewModel.Factory(activity.application, albumId!!)).get(
             AlbumDetailViewModel::class.java)
+        getAlbumDetail(activity)
+        getAlbumTracks(activity)
+        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
+            if (isNetworkError) onNetworkError()
+        })
+    }
+
+    fun getAlbumDetail(activity: FragmentActivity){
         viewModel.albumDetail.observe(viewLifecycleOwner, Observer<AlbumDetail> {
             setAlbumDetail(it)
         })
-        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
-            if (isNetworkError) onNetworkError()
+    }
+
+    fun getAlbumTracks(activity: FragmentActivity){
+        viewModel.tracks.observe(viewLifecycleOwner, Observer<List<Track>> {
+            if(it.count() == 0){
+                binding.tracksLabel.visibility = View.GONE
+            }
+            it.apply {
+                trackAdapter!!.tracks = this
+            }
         })
     }
 
@@ -68,6 +95,7 @@ class AlbumDetailFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         _binding = AlbumDetailFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
+        trackAdapter = TrackAdapter()
         return view
     }
 

@@ -6,19 +6,28 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.myapplication.model.models.Album
 import com.example.myapplication.model.models.AlbumDetail
+import com.example.myapplication.model.models.Track
 import com.example.myapplication.model.repository.AlbumRepository
+import com.example.myapplication.model.repository.TrackRepository
 
 class AlbumDetailViewModel(application: Application, albumId: Int) : AndroidViewModel(application) {
 
     private val albumsRepository = AlbumRepository(application)
+    private val trackRepository = TrackRepository(application)
 
     private val _albumDetail = MutableLiveData<AlbumDetail>()
+
+    private val _tracks = MutableLiveData<List<Track>>()
 
     val id:Int = albumId
 
     val albumDetail: LiveData<AlbumDetail>
         get() = _albumDetail
+
+    val tracks: LiveData<List<Track>>
+        get() = _tracks
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -32,11 +41,22 @@ class AlbumDetailViewModel(application: Application, albumId: Int) : AndroidView
 
     init {
         refreshDataFromNetwork()
+        refreshTracksFromNetwork()
     }
 
     private fun refreshDataFromNetwork() {
         albumsRepository.refreshDetailData(id,{
             _albumDetail.postValue(it)
+            _eventNetworkError.value = false
+            _isNetworkErrorShown.value = false
+        },{
+            _eventNetworkError.value = true
+        })
+    }
+
+    private fun refreshTracksFromNetwork() {
+        trackRepository.refreshTracksData(id,{
+            _tracks.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{

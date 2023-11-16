@@ -151,6 +151,29 @@
                             </LinearLayout>
                         </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
+                <TextView
+                    android:id="@+id/tracksLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-25dp"
+                    android:background="@color/white"
+                    android:elevation="10dp"
+                    android:paddingHorizontal="15dp"
+                    android:paddingTop="20dp"
+                    android:text="Canciones"
+                    android:textColor="@color/title"
+                    android:visibility="visible"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:elevation="10dp"
+                    android:id="@+id/trackRv"
+                    android:paddingHorizontal="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/track_item"/>
             </LinearLayout>
         </ScrollView>
     </FrameLayout>
