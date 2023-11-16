@@ -12,6 +12,9 @@ import com.example.myapplication.model.models.AlbumDetail
 import com.example.myapplication.model.models.Track
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class TrackServiceAdapter constructor(context: Context){
     private val requestQueue: RequestQueue by lazy {
@@ -28,7 +31,7 @@ class TrackServiceAdapter constructor(context: Context){
                 }
             }
     }
-    fun getTracksByAlbumId(idAlbum: Int, onComplete: (resp: List<Track>) -> Unit, onError: (error: VolleyError) -> Unit){
+    suspend fun getTracksByAlbumId(idAlbum: Int) = suspendCoroutine<List<Track>>{cont->
         requestQueue.add(getRequest("albums/$idAlbum/tracks",
             Response.Listener<String>{ response ->
                 val resp = JSONArray(response)
@@ -36,10 +39,10 @@ class TrackServiceAdapter constructor(context: Context){
                 for (i in 0 until resp.length()) {
                     list.add(i, Track(resp.getJSONObject(i)))
                 }
-                onComplete(list)
+                cont.resume(list)
             },
             Response.ErrorListener{
-                onError(it)
+                cont.resumeWithException(it)
             }))
     }
 

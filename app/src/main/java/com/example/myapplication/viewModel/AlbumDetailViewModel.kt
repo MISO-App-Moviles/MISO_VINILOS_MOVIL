@@ -1,16 +1,21 @@
 package com.example.myapplication.viewModel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.myapplication.model.models.Album
 import com.example.myapplication.model.models.AlbumDetail
 import com.example.myapplication.model.models.Track
 import com.example.myapplication.model.repository.AlbumRepository
 import com.example.myapplication.model.repository.TrackRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AlbumDetailViewModel(application: Application, albumId: Int) : AndroidViewModel(application) {
 
@@ -45,23 +50,37 @@ class AlbumDetailViewModel(application: Application, albumId: Int) : AndroidView
     }
 
     private fun refreshDataFromNetwork() {
-        albumsRepository.refreshDetailData(id,{
-            _albumDetail.postValue(it)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
+        try {
+            viewModelScope.launch(Dispatchers.Default) {
+                withContext(Dispatchers.IO){
+                    var data = albumsRepository.refreshDetailData(id)
+                    _albumDetail.postValue(data)
+                }
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            }
+        }
+        catch (e:Exception){ //se procesa la excepcion
+            Log.d("Error", e.toString())
             _eventNetworkError.value = true
-        })
+        }
     }
 
     private fun refreshTracksFromNetwork() {
-        trackRepository.refreshTracksData(id,{
-            _tracks.postValue(it)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
+        try {
+            viewModelScope.launch(Dispatchers.Default) {
+                withContext(Dispatchers.IO){
+                    var data = trackRepository.refreshTracksData(id)
+                    _tracks.postValue(data)
+                }
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            }
+        }
+        catch (e:Exception){ //se procesa la excepcion
+            Log.d("Error", e.toString())
             _eventNetworkError.value = true
-        })
+        }
     }
 
     fun onNetworkErrorShown() {

@@ -11,6 +11,9 @@ import com.example.myapplication.model.models.Album
 import com.example.myapplication.model.models.AlbumDetail
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class AlbumServiceAdapter constructor(context: Context){
     private val requestQueue: RequestQueue by lazy {
@@ -28,7 +31,7 @@ class AlbumServiceAdapter constructor(context: Context){
             }
     }
 
-    fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError:(error: VolleyError)->Unit){
+    suspend fun getAlbums() = suspendCoroutine<List<Album>>{cont->
         requestQueue.add(getRequest("albums",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
@@ -36,21 +39,21 @@ class AlbumServiceAdapter constructor(context: Context){
                 for (i in 0 until resp.length()) {
                     list.add(i, Album(resp.getJSONObject(i)))
                 }
-                onComplete(list)
+                cont.resume(list)
             },
             Response.ErrorListener {
-                onError(it)
+                cont.resumeWithException(it)
             }))
     }
 
-    fun getAlbumDetail(idAlbum: Int, onComplete: (resp: AlbumDetail) -> Unit, onError: (error: VolleyError) -> Unit){
+    suspend fun getAlbumDetail(idAlbum: Int) = suspendCoroutine<AlbumDetail>{cont->
         requestQueue.add(getRequest("albums/$idAlbum",
             Response.Listener<String>{ response ->
                 val albumDetail = AlbumDetail(JSONObject(response))
-                onComplete(albumDetail)
+                cont.resume(albumDetail)
             },
             Response.ErrorListener{
-                onError(it)
+                cont.resumeWithException(it)
             }))
     }
 

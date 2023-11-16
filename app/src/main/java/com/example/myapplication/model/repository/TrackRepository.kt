@@ -6,10 +6,7 @@ import com.example.myapplication.model.models.Track
 import com.example.myapplication.model.serviceAdapter.TrackServiceAdapter
 
 class TrackRepository(val application: Application) {
-    fun refreshTracksData(idAlbum: Int, callback: (List<Track>) -> Unit, onError: (VolleyError)->Unit){
-        TrackServiceAdapter.getInstance(application).getTracksByAlbumId(idAlbum, {
-            callback(it)
-        },
-            onError)
+    suspend fun refreshTracksData(idAlbum: Int) : List<Track> {
+        return TrackServiceAdapter.getInstance(application).getTracksByAlbumId(idAlbum)
     }
 }
