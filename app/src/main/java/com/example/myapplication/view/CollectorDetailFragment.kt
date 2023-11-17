@@ -35,6 +35,7 @@ class CollectorDetailFragment : Fragment() {
     private lateinit var albumsRecyclerView: RecyclerView
     private var artistPreviewAdapter: ArtistPreviewAdapter? = null
     private lateinit var artistsRecyclerView: RecyclerView
+    private var hasItems = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +71,7 @@ class CollectorDetailFragment : Fragment() {
     fun getCollectorDetail(activity: FragmentActivity){
         viewModel.collectorDetail.observe(viewLifecycleOwner, Observer<CollectorDetail> {
             setCollectorDetail(it)
+            checkIfViewHasItems()
         })
     }
 
@@ -77,10 +79,13 @@ class CollectorDetailFragment : Fragment() {
         viewModel.tracks.observe(viewLifecycleOwner, Observer<List<PreviewAlbum>> {
             if(it.count() == 0){
                 binding.albumsLabel.visibility = View.GONE
+            } else {
+                hasItems = true
             }
             it.apply {
                 albumPreviewAdapter!!.albums = this
             }
+            checkIfViewHasItems()
         })
     }
 
@@ -89,6 +94,8 @@ class CollectorDetailFragment : Fragment() {
         artistPreviewAdapter!!.artists = currentCollector.favoritePerformers
         if(currentCollector!!.favoritePerformers.count() == 0){
             binding.artistsLabel.visibility = View.GONE
+        } else {
+            hasItems = true
         }
         (activity as? AppCompatActivity)?.supportActionBar?.title = currentCollector.name
         Glide.with(this)
@@ -109,6 +116,14 @@ class CollectorDetailFragment : Fragment() {
         if(!viewModel.isNetworkErrorShown.value!!) {
             Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
+        }
+    }
+
+    private fun checkIfViewHasItems(){
+        if(!hasItems){
+            binding.noDataLabel.visibility = View.VISIBLE
+        }else{
+            binding.noDataLabel.visibility = View.GONE
         }
     }
 }
