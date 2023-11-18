@@ -9,6 +9,9 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.myapplication.model.models.Album
 import org.json.JSONArray
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class AlbumServiceAdapter constructor(context: Context){
     private val requestQueue: RequestQueue by lazy {
@@ -26,7 +29,7 @@ class AlbumServiceAdapter constructor(context: Context){
             }
     }
 
-    fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError:(error: VolleyError)->Unit){
+    suspend fun getAlbums() = suspendCoroutine<List<Album>>{cont->
         requestQueue.add(getRequest("albums",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
@@ -34,10 +37,10 @@ class AlbumServiceAdapter constructor(context: Context){
                 for (i in 0 until resp.length()) {
                     list.add(i, Album(resp.getJSONObject(i)))
                 }
-                onComplete(list)
+                cont.resume(list)
             },
             Response.ErrorListener {
-                onError(it)
+                cont.resumeWithException(it)
             }))
     }
 
