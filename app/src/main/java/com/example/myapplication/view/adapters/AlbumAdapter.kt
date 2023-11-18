@@ -2,7 +2,6 @@ package com.example.myapplication.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
@@ -11,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.databinding.AlbumItemBinding
 import com.example.myapplication.model.models.Album
+import com.example.myapplication.view.AlbumFragmentDirections
 
 
 class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
@@ -45,11 +45,11 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
                 .load(albums[position].cover)
                 .into(holder.viewDataBinding.albumCover);
         }
-//        holder.viewDataBinding.root.setOnClickListener {
-//            val action = AlbumFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)
-//            // Navigate using that action
-//            holder.viewDataBinding.root.findNavController().navigate(action)
-//        }
+        holder.viewDataBinding.root.setOnClickListener {
+            val action = AlbumFragmentDirections.actionNavigationAlbumListToAlbumDetailFragment(albums[position].albumId)
+            // Navigate using that action
+            holder.viewDataBinding.root.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

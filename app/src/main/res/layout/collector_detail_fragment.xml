@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.CollectorDetailFragment">
+
+    <data>
+        <variable name="collector" type="com.example.myapplication.model.models.CollectorDetail" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="60dp">
+
+            <LinearLayout
+                android:id="@+id/innerLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/collectorDetailAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/ic_no_image" />
+
+                <TextView
+                    android:id="@+id/noDataLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:gravity="center"
+                    android:layout_marginTop="-25dp"
+                    android:background="@drawable/rounded_corner"
+                    android:elevation="10dp"
+                    android:text="No hay datos que mostrar"
+                    android:textColor="@color/title"
+                    android:visibility="invisible"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/albumsLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-25dp"
+                    android:background="@drawable/rounded_corner"
+                    android:elevation="10dp"
+                    android:paddingHorizontal="15dp"
+                    android:paddingTop="20dp"
+                    android:text="Albums"
+                    android:textColor="@color/title"
+                    android:visibility="visible"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:elevation="10dp"
+                    android:id="@+id/albumPreviewRv"
+                    android:paddingHorizontal="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/album_preview_item"/>
+                <TextView
+                    android:id="@+id/artistsLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:background="@color/white"
+                    android:elevation="10dp"
+                    android:paddingHorizontal="15dp"
+                    android:paddingTop="20dp"
+                    android:text="Artistas"
+                    android:textColor="@color/title"
+                    android:visibility="visible"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:elevation="10dp"
+                    android:id="@+id/artistPreviewRv"
+                    android:paddingHorizontal="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/artist_preview_item"/>
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+
+</layout>
