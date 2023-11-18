@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.databinding.AlbumPreviewItemBinding
 import com.example.myapplication.model.models.PreviewAlbum
-import com.example.myapplication.view.AlbumFragmentDirections
 import com.example.myapplication.view.CollectorDetailFragmentDirections
 
 class AlbumPreviewAdapter: RecyclerView.Adapter<AlbumPreviewAdapter.AlbumPreviewViewHolder>() {
@@ -49,7 +48,6 @@ class AlbumPreviewAdapter: RecyclerView.Adapter<AlbumPreviewAdapter.AlbumPreview
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }
-
     }
 
     override fun getItemCount(): Int {

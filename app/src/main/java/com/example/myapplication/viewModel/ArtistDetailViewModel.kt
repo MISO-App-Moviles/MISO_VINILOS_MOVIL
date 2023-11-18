@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.model.models.ArtistDetail
+import com.example.myapplication.model.models.PreviewAlbum
 import com.example.myapplication.model.repository.ArtistRepository
 
 class ArtistDetailViewModel(application: Application, idArtist: Int) : AndroidViewModel(application) {
@@ -14,9 +15,13 @@ class ArtistDetailViewModel(application: Application, idArtist: Int) : AndroidVi
 
     private val artistRepository = ArtistRepository(application)
 
-    private val _artist = MutableLiveData<ArtistDetail>()
+    private val _artistDetail = MutableLiveData<ArtistDetail>()
     val artist: LiveData<ArtistDetail>
-        get() = _artist
+        get() = _artistDetail
+
+    private val _albums = MutableLiveData<List<PreviewAlbum>>()
+    val tracks: LiveData<List<PreviewAlbum>>
+        get() = _albums
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
     val eventNetworkError: LiveData<Boolean>
@@ -32,7 +37,7 @@ class ArtistDetailViewModel(application: Application, idArtist: Int) : AndroidVi
 
     private fun refreshDataFromNetwork() {
         artistRepository.refreshDetailData(id, {
-            _artist.postValue(it)
+            _artistDetail.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{
