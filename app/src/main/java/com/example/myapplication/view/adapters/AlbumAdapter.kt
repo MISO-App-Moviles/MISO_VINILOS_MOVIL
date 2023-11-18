@@ -7,6 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.myapplication.R
 import com.example.myapplication.databinding.AlbumItemBinding
 import com.example.myapplication.model.models.Album
@@ -43,6 +45,7 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>(){
             it.album = albums[position]
             Glide.with(holder.itemView.getContext())
                 .load(albums[position].cover)
+                .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                 .into(holder.viewDataBinding.albumCover);
         }
         holder.viewDataBinding.root.setOnClickListener {

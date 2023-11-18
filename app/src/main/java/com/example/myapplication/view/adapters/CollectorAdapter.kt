@@ -6,6 +6,8 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.myapplication.R
 import com.example.myapplication.databinding.CollectorItemBinding
 import com.example.myapplication.model.models.Collector
@@ -44,6 +46,7 @@ class CollectorAdapter: RecyclerView.Adapter<CollectorAdapter.CollectorViewHolde
             it.collector = collectors[position]
             Glide.with(holder.itemView.getContext())
                 .load(R.drawable.icon_person)
+                .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                 .into(holder.viewDataBinding.collectorAvatar);
         }
     }

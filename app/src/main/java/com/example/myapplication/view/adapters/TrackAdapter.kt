@@ -6,6 +6,8 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.myapplication.R
 import com.example.myapplication.databinding.TrackItemBinding
 import com.example.myapplication.model.models.Track
@@ -39,6 +41,7 @@ class TrackAdapter : RecyclerView.Adapter<TrackAdapter.TrackViewHolder>(){
             it.track = tracks[position]
             Glide.with(holder.itemView.getContext())
                 .load(R.drawable.vynil_image)
+                .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                 .into(holder.viewDataBinding.trackImage);
         }
     }

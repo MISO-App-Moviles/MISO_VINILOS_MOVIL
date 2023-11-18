@@ -7,11 +7,6 @@
     <data>
         <variable name="album" type="com.example.myapplication.model.models.AlbumDetail" />
     </data>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -177,5 +172,4 @@
                     tools:listitem="@layout/track_item"/>
             </LinearLayout>
         </ScrollView>
-    </FrameLayout>
 </layout>
