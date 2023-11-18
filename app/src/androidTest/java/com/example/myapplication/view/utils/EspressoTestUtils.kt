@@ -11,6 +11,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers
 import org.hamcrest.Matchers.allOf
@@ -83,5 +84,33 @@ object EspressoTestUtils {
             )
         )
         textView.check(matches(withText(title)))
+    }
+
+    fun checkActionBarTitle(title: String){
+        val textView = Espresso.onView(
+            Matchers.allOf(
+                withText(title),
+                withParent(
+                    Matchers.allOf(
+                        withId(androidx.appcompat.R.id.action_bar),
+                        withParent(withId(androidx.appcompat.R.id.action_bar_container))
+                    )
+                ),
+                isDisplayed()
+            )
+        )
+        textView.check(matches(withText(title)))
+    }
+
+
+
+    fun checkMultipleItemsInRecyclerView(recyclerViewId: Int, textViewId: Int, itemTexts: List<String>) {
+        itemTexts.forEachIndexed { index, text ->
+            checkItemInRecyclerView(recyclerViewId, index, textViewId, text)
+        }
+    }
+
+    fun clickItemInRecyclerView(recyclerViewId: Int, position: Int) {
+        onView(withId(recyclerViewId)).perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(position, click()))
     }
 }
