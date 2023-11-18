@@ -50,6 +50,7 @@
                     android:background="@color/white"
                     android:elevation="10dp"
                     android:paddingHorizontal="15dp"
+                    android:layout_marginBottom="25dp"
                     android:text="@{album.description}"
                     android:textColor="@color/text"
                     android:textStyle="normal" />
