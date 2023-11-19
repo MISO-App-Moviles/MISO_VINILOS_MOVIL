@@ -31,20 +31,6 @@
                     app:srcCompat="@drawable/ic_no_image" />
 
                 <TextView
-                    android:id="@+id/noDataLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:gravity="center"
-                    android:layout_marginTop="-25dp"
-                    android:background="@drawable/rounded_corner"
-                    android:elevation="10dp"
-                    android:text="No hay datos que mostrar"
-                    android:textColor="@color/title"
-                    android:visibility="invisible"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-25dp"
@@ -74,7 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-25dp"
-                    android:background="@drawable/rounded_corner"
+                    android:background="@color/white"
                     android:elevation="10dp"
                     android:paddingHorizontal="15dp"
                     android:paddingTop="20dp"

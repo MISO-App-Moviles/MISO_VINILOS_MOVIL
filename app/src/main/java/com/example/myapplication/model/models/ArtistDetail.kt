@@ -22,6 +22,22 @@ data class ArtistDetail (
     getAlbums(artistDetail?.optJSONArray("albums")),
     getPerformerPrizes(artistDetail?.optJSONArray("performerPrizes")),
   )
+
+
+  fun getAlbumsPreview() : List<PreviewAlbum>{
+    val albumsList = mutableListOf<PreviewAlbum>()
+    for (i in 0 until albums.size) {
+      albumsList.add(
+        PreviewAlbum(
+          albums.get(i).albumId,
+          albums.get(i).name,
+          albums.get(i).cover
+        )
+      )
+    }
+    return albumsList
+  }
+
 }
 
 private fun getPerformerPrizes(performerArray: JSONArray?): List<PerformerPrizes> {
@@ -51,3 +67,5 @@ private fun getAlbums(albumArray: JSONArray?): List<Album> {
   }
   return albumList
 }
+
+

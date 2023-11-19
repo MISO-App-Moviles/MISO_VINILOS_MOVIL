@@ -68,7 +68,6 @@ class ArtistDetailFragment : Fragment() {
     fun getArtistDetail(){
         viewModel.artist.observe(viewLifecycleOwner, Observer<ArtistDetail> {
             setArtistDetail(it)
-            checkIfViewHasItems()
         })
     }
 
@@ -83,15 +82,12 @@ class ArtistDetailFragment : Fragment() {
 
     fun getAlbums(){
         viewModel.albums.observe(viewLifecycleOwner, Observer<List<PreviewAlbum>> {
-            if(it.count() == 0){
+            if(it.isEmpty()){
                 binding.albumsLabel.visibility = View.GONE
-            } else {
-                hasItems = true
             }
             it.apply {
                 albumPreviewAdapter!!.albums = this
             }
-            checkIfViewHasItems()
         })
     }
 
@@ -107,14 +103,6 @@ class ArtistDetailFragment : Fragment() {
         if(!viewModel.isNetworkErrorShown.value!!) {
             Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
-        }
-    }
-
-    private fun checkIfViewHasItems(){
-        if(hasItems){
-            binding.noDataLabel.visibility = View.VISIBLE
-        }else{
-            binding.noDataLabel.visibility = View.GONE
         }
     }
 
