@@ -9,8 +9,13 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.myapplication.model.models.Artist
 import com.example.myapplication.model.models.ArtistDetail
+import com.example.myapplication.model.models.PreviewAlbum
+import com.example.myapplication.model.models.parseAlbums
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class ArtistServiceAdapter constructor(context: Context) {
     private val requestQueue: RequestQueue by lazy {
@@ -58,6 +63,17 @@ class ArtistServiceAdapter constructor(context: Context) {
             },
             Response.ErrorListener{
                 onError(it)
+            }))
+    }
+
+    suspend fun getArtistAlbums(idMusician: Int) = suspendCoroutine<List<PreviewAlbum>>{ cont->
+        requestQueue.add(getRequest("musicians/$idMusician/albums",
+            Response.Listener<String>{ response ->
+                val albums = parseAlbums(JSONArray(response))
+                cont.resume(albums)
+            },
+            Response.ErrorListener{
+                cont.resumeWithException(it)
             }))
     }
 
