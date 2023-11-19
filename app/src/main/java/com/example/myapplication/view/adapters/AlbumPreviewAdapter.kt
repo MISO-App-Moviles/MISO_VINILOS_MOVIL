@@ -4,11 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
+
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.databinding.AlbumPreviewItemBinding
 import com.example.myapplication.model.models.PreviewAlbum
+import com.example.myapplication.view.AlbumFragmentDirections
+import com.example.myapplication.view.CollectorDetailFragmentDirections
 
 class AlbumPreviewAdapter: RecyclerView.Adapter<AlbumPreviewAdapter.AlbumPreviewViewHolder>() {
         class AlbumPreviewViewHolder(val viewDataBinding: AlbumPreviewItemBinding) :
