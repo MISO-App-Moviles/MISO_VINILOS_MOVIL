@@ -90,7 +90,10 @@ class AlbumDetailFragment : Fragment() {
         (activity as? AppCompatActivity)?.supportActionBar?.title = currentAlbum.name
         Glide.with(this)
             .load(currentAlbum.cover)
+<<<<<<< HEAD
             .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
+=======
+>>>>>>> develop
             .into(binding.albumCover);
     }
 
