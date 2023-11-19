@@ -15,6 +15,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.myapplication.R
 import com.example.myapplication.databinding.AlbumDetailFragmentBinding
 import com.example.myapplication.databinding.AlbumFragmentBinding
@@ -88,6 +90,10 @@ class AlbumDetailFragment : Fragment() {
         (activity as? AppCompatActivity)?.supportActionBar?.title = currentAlbum.name
         Glide.with(this)
             .load(currentAlbum.cover)
+<<<<<<< HEAD
+            .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
+=======
+>>>>>>> develop
             .into(binding.albumCover);
     }
 

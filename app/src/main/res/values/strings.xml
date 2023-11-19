@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Vinilos</string>
     <string name="title_artist">Artistas</string>
     <string name="title_collectors">Coleccionistas</string>
     <string name="title_album_list">Albums</string>
