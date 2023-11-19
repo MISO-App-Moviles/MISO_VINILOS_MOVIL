@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -11,6 +12,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.myapplication.R
 import com.example.myapplication.databinding.CollectorItemBinding
 import com.example.myapplication.model.models.Collector
+import com.example.myapplication.view.CollectorFragmentDirections
 
 class CollectorAdapter: RecyclerView.Adapter<CollectorAdapter.CollectorViewHolder>() {
 
@@ -48,6 +50,11 @@ class CollectorAdapter: RecyclerView.Adapter<CollectorAdapter.CollectorViewHolde
                 .load(R.drawable.icon_person)
                 .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                 .into(holder.viewDataBinding.collectorAvatar);
+        }
+        holder.viewDataBinding.root.setOnClickListener {
+            val action = CollectorFragmentDirections.actionNavigationCollectorsToCollectorDetailFragment(collectors[position].collectorId)
+            // Navigate using that action
+            holder.viewDataBinding.root.findNavController().navigate(action)
         }
     }
 }
