@@ -23,13 +23,13 @@ class CollectorDetailViewModel(application: Application, collectorId: Int) : And
 
     private val _albums = MutableLiveData<List<PreviewAlbum>>()
 
+    val tracks: LiveData<List<PreviewAlbum>>
+        get() = _albums
+
     val id:Int = collectorId
 
     val collectorDetail: LiveData<CollectorDetail>
         get() = _collectorDetail
-
-    val tracks: LiveData<List<PreviewAlbum>>
-        get() = _albums
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 

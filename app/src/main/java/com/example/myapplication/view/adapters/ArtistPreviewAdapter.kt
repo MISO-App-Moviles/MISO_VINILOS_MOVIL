@@ -41,12 +41,6 @@ class ArtistPreviewAdapter: RecyclerView.Adapter<ArtistPreviewAdapter.ArtistPrev
                 .load(artists[position].image)
                 .into(holder.viewDataBinding.artistImage);
         }
-//        holder.viewDataBinding.root.setOnClickListener {
-//            val action = CollectorDetailFragmentDirections.actionCollectorDetailFragmentToArtistDetailFragment(artists[position].id)
-//            // Navigate using that action
-//            holder.viewDataBinding.root.findNavController().navigate(action)
-//        }
-
     }
 
     override fun getItemCount(): Int {

@@ -1,14 +1,12 @@
 package com.example.myapplication.view
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,16 +15,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.example.myapplication.R
 import com.example.myapplication.databinding.AlbumDetailFragmentBinding
-import com.example.myapplication.databinding.AlbumFragmentBinding
-import com.example.myapplication.model.models.Album
 import com.example.myapplication.model.models.AlbumDetail
 import com.example.myapplication.model.models.Track
-import com.example.myapplication.view.adapters.AlbumAdapter
 import com.example.myapplication.view.adapters.TrackAdapter
 import com.example.myapplication.viewModel.AlbumDetailViewModel
-import com.example.myapplication.viewModel.AlbumViewModel
 
 /**
  * A simple [Fragment] subclass.
