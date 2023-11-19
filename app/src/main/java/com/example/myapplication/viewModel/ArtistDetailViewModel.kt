@@ -25,7 +25,7 @@ class ArtistDetailViewModel(application: Application, idArtist: Int) : AndroidVi
         get() = _artistDetail
 
     private val _albums = MutableLiveData<List<PreviewAlbum>>()
-    val tracks: LiveData<List<PreviewAlbum>>
+    val albums: LiveData<List<PreviewAlbum>>
         get() = _albums
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)

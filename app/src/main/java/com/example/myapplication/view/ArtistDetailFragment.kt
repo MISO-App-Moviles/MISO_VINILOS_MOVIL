@@ -82,7 +82,7 @@ class ArtistDetailFragment : Fragment() {
     }
 
     fun getAlbums(){
-        viewModel.tracks.observe(viewLifecycleOwner, Observer<List<PreviewAlbum>> {
+        viewModel.albums.observe(viewLifecycleOwner, Observer<List<PreviewAlbum>> {
             if(it.count() == 0){
                 binding.albumsLabel.visibility = View.GONE
             } else {

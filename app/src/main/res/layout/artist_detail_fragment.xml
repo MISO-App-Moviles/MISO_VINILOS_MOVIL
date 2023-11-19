@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.ArtistDetailFragment">
 
     <data>
-
-        <variable
-            name="artist"
-            type="com.example.myapplication.model.models.ArtistDetail" />
+        <variable name="artist" type="com.example.myapplication.model.models.ArtistDetail" />
     </data>
 
     <FrameLayout
@@ -37,15 +34,15 @@
                     android:id="@+id/noDataLabel"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
+                    android:gravity="center"
                     android:layout_marginTop="-25dp"
                     android:background="@drawable/rounded_corner"
                     android:elevation="10dp"
-                    android:gravity="center"
                     android:text="No hay datos que mostrar"
                     android:textColor="@color/title"
+                    android:visibility="invisible"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:visibility="invisible" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
