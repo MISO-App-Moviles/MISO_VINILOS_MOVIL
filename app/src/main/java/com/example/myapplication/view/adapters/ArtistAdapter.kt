@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -11,6 +12,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ArtistItemBinding
 import com.example.myapplication.model.models.Artist
+import com.example.myapplication.view.ArtistFragmentDirections
 
 class ArtistAdapter : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>(){
 
@@ -45,10 +47,10 @@ class ArtistAdapter : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>(){
                 .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                 .into(holder.viewDataBinding.artistImage);
         }
-    //holder.viewDataBinding.root.setOnClickListener {
-    //    val action = ArtistDetailFragmentDirections.action_artistFragment_to_artistDetailFragment(artists[position].id)
-    //    holder.viewDataBinding.root.findNavController().navigate(action)
-    //}
+        holder.viewDataBinding.root.setOnClickListener {
+            val action = ArtistFragmentDirections.actionArtistFragmentToArtistDetailFragment(artists[position].id)
+            holder.viewDataBinding.root.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

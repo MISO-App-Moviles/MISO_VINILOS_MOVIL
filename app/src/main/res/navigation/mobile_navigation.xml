@@ -61,9 +61,6 @@
         <argument
             android:name="artistId"
             app:argType="integer" />
-        <action
-            android:id="@+id/action_navigation_artist_list_to_artistDetailFragment"
-            app:destination="@id/albumDetailFragment" />
     </fragment>
 
 </navigation>

@@ -33,6 +33,20 @@
                     app:srcCompat="@drawable/ic_no_image" />
 
                 <TextView
+                    android:id="@+id/noDataLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:gravity="center"
+                    android:layout_marginTop="-25dp"
+                    android:background="@drawable/rounded_corner"
+                    android:elevation="10dp"
+                    android:text="No hay datos que mostrar"
+                    android:textColor="@color/title"
+                    android:visibility="invisible"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-25dp"
@@ -58,6 +72,7 @@
                     android:textStyle="normal" />
 
                 <TextView
+                    android:id="@+id/albumsLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-25dp"
@@ -99,46 +114,21 @@
                                 android:textSize="10sp"
                                 android:text="name"
                                 android:textColor="@color/white" />
-                            <TextView
-                                android:id="@+id/releaseDate"
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:background="@color/white"
+                                android:orientation="horizontal"
+                                android:elevation="10dp"
+                                android:id="@+id/artistPreviewRv"
+                                android:paddingHorizontal="15dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:gravity="center_horizontal"
-                                android:layout_weight="1"
-                                android:elevation="10dp"
-                                android:paddingBottom="20dp"
-                                android:textSize="25dp"
-                                android:textStyle="bold"
-                                android:text="@{artist.name}"
-                                android:textColor="@color/white" />
+                                tools:listitem="@layout/album_preview_item"/>
+
                         </LinearLayout>
+
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
-
-                <TextView
-                    android:id="@+id/albumsLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="-25dp"
-                    android:background="@drawable/rounded_corner"
-                    android:elevation="10dp"
-                    android:paddingHorizontal="15dp"
-                    android:paddingTop="20dp"
-                    android:text="Albums"
-                    android:textColor="@color/title"
-                    android:visibility="visible"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:elevation="10dp"
-                    android:id="@+id/albumPreviewRv"
-                    android:paddingHorizontal="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:listitem="@layout/album_preview_item"/>
 
             </LinearLayout>
         </ScrollView>

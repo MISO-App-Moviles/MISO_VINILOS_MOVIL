@@ -13,7 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.myapplication.R
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.myapplication.databinding.ArtistDetailFragmentBinding
 import com.example.myapplication.model.models.ArtistDetail
 import com.example.myapplication.model.models.PreviewAlbum
@@ -46,7 +47,7 @@ class ArtistDetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        albumsRecyclerView = binding.albumPreviewRv
+        albumsRecyclerView = binding.artistPreviewRv
         albumsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         albumsRecyclerView.adapter = albumPreviewAdapter
     }
@@ -68,7 +69,7 @@ class ArtistDetailFragment : Fragment() {
     fun getArtistDetail(activity: FragmentActivity){
         viewModel.artist.observe(viewLifecycleOwner, Observer<ArtistDetail> {
             setArtistDetail(it)
-            //checkIfViewHasItems()
+            checkIfViewHasItems()
         })
     }
 
@@ -76,7 +77,8 @@ class ArtistDetailFragment : Fragment() {
         binding.artist = currentArtist
         (activity as? AppCompatActivity)?.supportActionBar?.title = currentArtist.name
         Glide.with(this)
-            .load(R.drawable.im_record_player)
+            .load(currentArtist.image)
+            .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
             .into(binding.artistDetailAvatar);
     }
 
@@ -90,7 +92,7 @@ class ArtistDetailFragment : Fragment() {
             it.apply {
                 albumPreviewAdapter!!.albums = this
             }
-            //checkIfViewHasItems()
+            checkIfViewHasItems()
         })
     }
 
@@ -109,13 +111,12 @@ class ArtistDetailFragment : Fragment() {
         }
     }
 
-    /**
     private fun checkIfViewHasItems(){
-        if(!hasItems){
+        if(hasItems){
             binding.noDataLabel.visibility = View.VISIBLE
         }else{
             binding.noDataLabel.visibility = View.GONE
         }
     }
-    **/
+
 }
