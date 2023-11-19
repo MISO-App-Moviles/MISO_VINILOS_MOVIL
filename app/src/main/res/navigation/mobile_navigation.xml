@@ -54,4 +54,12 @@
             app:destination="@id/albumDetailFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.example.myapplication.view.AlbumDetailFragment"
+        tools:layout="@layout/album_detail_fragment" >
+        <argument android:name="albumId"
+            app:argType="integer" />
+    </fragment>
+
 </navigation>

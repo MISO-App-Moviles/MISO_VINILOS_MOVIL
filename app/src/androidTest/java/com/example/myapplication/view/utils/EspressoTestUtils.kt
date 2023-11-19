@@ -102,8 +102,6 @@ object EspressoTestUtils {
         textView.check(matches(withText(title)))
     }
 
-
-
     fun checkMultipleItemsInRecyclerView(recyclerViewId: Int, textViewId: Int, itemTexts: List<String>) {
         itemTexts.forEachIndexed { index, text ->
             checkItemInRecyclerView(recyclerViewId, index, textViewId, text)

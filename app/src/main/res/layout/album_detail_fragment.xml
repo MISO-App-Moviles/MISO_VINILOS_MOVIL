@@ -7,12 +7,8 @@
     <data>
         <variable name="album" type="com.example.myapplication.model.models.AlbumDetail" />
     </data>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <ScrollView
+            android:id="@+id/albumSV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingBottom="60dp">
@@ -31,6 +27,7 @@
                     app:srcCompat="@drawable/ic_no_image" />
 
                 <TextView
+                    android:id="@+id/albumDescripcion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-25dp"
@@ -50,6 +47,7 @@
                     android:background="@color/white"
                     android:elevation="10dp"
                     android:paddingHorizontal="15dp"
+                    android:layout_marginBottom="25dp"
                     android:text="@{album.description}"
                     android:textColor="@color/text"
                     android:textStyle="normal" />
@@ -176,5 +174,4 @@
                     tools:listitem="@layout/track_item"/>
             </LinearLayout>
         </ScrollView>
-    </FrameLayout>
 </layout>

@@ -8,6 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ArtistItemBinding
 import com.example.myapplication.model.models.Artist
@@ -42,6 +44,7 @@ class ArtistAdapter : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>(){
             it.artist = artists[position]
             Glide.with(holder.itemView.getContext())
                 .load(artists[position].image)
+                .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                 .into(holder.viewDataBinding.artistImage);
         }
 //        holder.viewDataBinding.root.setOnClickListener {
