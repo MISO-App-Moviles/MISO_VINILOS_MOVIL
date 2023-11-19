@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,7 +46,7 @@ class ArtistDetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        albumsRecyclerView = binding.artistPreviewRv
+        albumsRecyclerView = binding.albumPreviewRv
         albumsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         albumsRecyclerView.adapter = albumPreviewAdapter
     }
@@ -59,14 +58,14 @@ class ArtistDetailFragment : Fragment() {
         }
         viewModel = ViewModelProvider(this, ArtistDetailViewModel.Factory(activity.application, artistId!!)).get(
             ArtistDetailViewModel::class.java)
-        getArtistDetail(activity)
-        getAlbums(activity)
+        getArtistDetail()
+        getAlbums()
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
     }
 
-    fun getArtistDetail(activity: FragmentActivity){
+    fun getArtistDetail(){
         viewModel.artist.observe(viewLifecycleOwner, Observer<ArtistDetail> {
             setArtistDetail(it)
             checkIfViewHasItems()
@@ -82,7 +81,7 @@ class ArtistDetailFragment : Fragment() {
             .into(binding.artistDetailAvatar);
     }
 
-    fun getAlbums(activity: FragmentActivity){
+    fun getAlbums(){
         viewModel.tracks.observe(viewLifecycleOwner, Observer<List<PreviewAlbum>> {
             if(it.count() == 0){
                 binding.albumsLabel.visibility = View.GONE

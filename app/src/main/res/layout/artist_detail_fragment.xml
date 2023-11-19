@@ -116,10 +116,10 @@
                                 android:textColor="@color/white" />
 
                             <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/albumPreviewRv"
                                 android:background="@color/white"
                                 android:orientation="horizontal"
                                 android:elevation="10dp"
-                                android:id="@+id/artistPreviewRv"
                                 android:paddingHorizontal="15dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
