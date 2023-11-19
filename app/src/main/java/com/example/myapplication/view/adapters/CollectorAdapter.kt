@@ -56,5 +56,10 @@ class CollectorAdapter: RecyclerView.Adapter<CollectorAdapter.CollectorViewHolde
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }
+
+
+
+
+
     }
 }

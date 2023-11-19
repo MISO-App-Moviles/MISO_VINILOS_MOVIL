@@ -22,7 +22,7 @@ data class CollectorDetail(
 }
 
 data class PreviewPerformer (
-    var id           : Int?    = null,
+    var id           : Int    = 0,
     var name         : String? = null,
     var image        : String? = null,
 )

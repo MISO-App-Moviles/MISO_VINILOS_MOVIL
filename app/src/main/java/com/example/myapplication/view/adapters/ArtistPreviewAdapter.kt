@@ -4,11 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ArtistPreviewItemBinding
 import com.example.myapplication.model.models.PreviewPerformer
+import com.example.myapplication.view.CollectorDetailFragmentDirections
 
 class ArtistPreviewAdapter: RecyclerView.Adapter<ArtistPreviewAdapter.ArtistPreviewViewHolder>(){
     class ArtistPreviewViewHolder(val viewDataBinding: ArtistPreviewItemBinding) :
@@ -40,6 +42,11 @@ class ArtistPreviewAdapter: RecyclerView.Adapter<ArtistPreviewAdapter.ArtistPrev
             Glide.with(holder.itemView.getContext())
                 .load(artists[position].image)
                 .into(holder.viewDataBinding.artistImage);
+        }
+        holder.viewDataBinding.root.setOnClickListener {
+            val action = CollectorDetailFragmentDirections.actionCollectorDetailFragmentToFragmentArtistDetail(artists[position].id)
+            // Navigate using that action
+            holder.viewDataBinding.root.findNavController().navigate(action)
         }
     }
 

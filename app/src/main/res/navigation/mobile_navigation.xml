@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_collectorDetailFragment_to_albumDetailFragment"
             app:destination="@id/albumDetailFragment" />
+        <action
+            android:id="@+id/action_collectorDetailFragment_to_fragment_artist_detail"
+            app:destination="@id/fragment_artist_detail" />
     </fragment>
 
     <!-- Acción para navegar de la artist al Detalle -->
