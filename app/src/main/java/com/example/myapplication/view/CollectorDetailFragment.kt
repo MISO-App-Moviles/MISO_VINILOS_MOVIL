@@ -14,7 +14,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.executor.GlideExecutor.UncaughtThrowableStrategy.LOG
+import com.bumptech.glide.request.RequestOptions
 import com.example.myapplication.R
 import com.example.myapplication.databinding.CollectorDetailFragmentBinding
 import com.example.myapplication.model.models.CollectorDetail
@@ -104,6 +106,7 @@ class CollectorDetailFragment : Fragment() {
         (activity as? AppCompatActivity)?.supportActionBar?.title = currentCollector.name
         Glide.with(this)
             .load(R.drawable.im_record_player)
+            .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
             .into(binding.collectorDetailAvatar);
     }
 
