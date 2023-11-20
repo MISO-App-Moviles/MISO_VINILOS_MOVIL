@@ -9,18 +9,64 @@
         android:id="@+id/navigation_album_list"
         android:name="com.example.myapplication.view.AlbumFragment"
         android:label="@string/title_album_list"
-        tools:layout="@layout/album_fragment" />
+        tools:layout="@layout/album_fragment" >
+        <action
+            android:id="@+id/action_navigation_album_list_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.example.myapplication.view.AlbumDetailFragment"
+        tools:layout="@layout/album_detail_fragment" >
+        <argument android:name="albumId"
+            app:argType="integer" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_collectors"
         android:name="com.example.myapplication.view.CollectorFragment"
         android:label="@string/title_collectors"
-        tools:layout="@layout/collector_fragment" />
+        tools:layout="@layout/collector_fragment" >
+        <action
+            android:id="@+id/action_navigation_collectors_to_collectorDetailFragment"
+            app:destination="@id/collectorDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectorDetailFragment"
+        android:name="com.example.myapplication.view.CollectorDetailFragment"
+        tools:layout="@layout/collector_detail_fragment" >
+        <argument
+            android:name="collectorId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_collectorDetailFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
+        <action
+            android:id="@+id/action_collectorDetailFragment_to_fragment_artist_detail"
+            app:destination="@id/fragment_artist_detail" />
+    </fragment>
 
+    <!-- Acción para navegar de la artist al Detalle -->
     <fragment
         android:id="@+id/navigation_artist"
         android:name="com.example.myapplication.view.ArtistFragment"
         android:label="@string/title_artist"
-        tools:layout="@layout/artist_fragment" />
+        tools:layout="@layout/artist_fragment">
+        <action
+            android:id="@+id/action_artistFragment_to_artistDetailFragment"
+            app:destination="@id/fragment_artist_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_artist_detail"
+        android:name="com.example.myapplication.view.ArtistDetailFragment"
+        android:label="fragment_artist_detail"
+        tools:layout="@layout/artist_detail_fragment">
+        <argument
+            android:name="artistId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_fragment_artist_detail_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
+    </fragment>
 
 </navigation>
