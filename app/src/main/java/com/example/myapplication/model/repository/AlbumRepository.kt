@@ -12,4 +12,8 @@ class AlbumRepository(val application: Application) {
         //Determinar la fuente de datos que se va a utilizar. Si es necesario consultar la red, ejecutar el siguiente código
         return AlbumServiceAdapter.getInstance(application).getAlbums();
     }
+
+    suspend fun refreshDetailData(idAlbum: Int) : AlbumDetail {
+        return AlbumServiceAdapter.getInstance(application).getAlbumDetail(idAlbum)
+    }
 }
