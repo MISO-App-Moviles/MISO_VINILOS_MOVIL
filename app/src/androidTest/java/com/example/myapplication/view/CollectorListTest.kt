@@ -40,9 +40,9 @@ class CollectorListTest {
         checkHeaderTitle(TITLE)
 
         Thread.sleep(2000)
-        checkItemInRecyclerView(R.id.collectorRv, 1, R.id.collectorAvatar)
-        checkItemInRecyclerView(R.id.collectorRv, 1, R.id.collectorName, COLLECTOR_NAME)
-        checkItemInRecyclerView(R.id.collectorRv, 1, R.id.collectorEmail, COLLECTOR_EMAIL)
-        checkItemInRecyclerView(R.id.collectorRv, 1, R.id.collectorTelephone, COLLECTOR_TELEPHONE)
+        checkItemInRecyclerView(R.id.collectorRv, 0, R.id.collectorAvatar)
+        checkItemInRecyclerView(R.id.collectorRv, 0, R.id.collectorName, COLLECTOR_NAME)
+        checkItemInRecyclerView(R.id.collectorRv, 0, R.id.collectorEmail, COLLECTOR_EMAIL)
+        checkItemInRecyclerView(R.id.collectorRv, 0, R.id.collectorTelephone, COLLECTOR_TELEPHONE)
     }
 }

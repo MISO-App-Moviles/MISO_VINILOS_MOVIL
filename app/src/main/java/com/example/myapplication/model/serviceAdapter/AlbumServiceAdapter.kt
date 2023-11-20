@@ -10,7 +10,6 @@ import com.android.volley.toolbox.Volley
 import com.example.myapplication.model.models.Album
 import com.example.myapplication.model.models.AlbumDetail
 import org.json.JSONArray
-import org.json.JSONObject
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
@@ -42,17 +41,6 @@ class AlbumServiceAdapter constructor(context: Context){
                 cont.resume(list)
             },
             Response.ErrorListener {
-                cont.resumeWithException(it)
-            }))
-    }
-
-    suspend fun getAlbumDetail(idAlbum: Int) = suspendCoroutine<AlbumDetail>{cont->
-        requestQueue.add(getRequest("albums/$idAlbum",
-            Response.Listener<String>{ response ->
-                val albumDetail = AlbumDetail(JSONObject(response))
-                cont.resume(albumDetail)
-            },
-            Response.ErrorListener{
                 cont.resumeWithException(it)
             }))
     }
