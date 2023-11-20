@@ -62,11 +62,11 @@ class CollectorItemDetailTest {
         )
 //
         // Navigate to the detail of the first album
-        clickItemInRecyclerView(R.id.albumPreviewRv, 0)
+        clickItemInRecyclerView(R.id.artistPreviewRv, 0)
 
         Thread.sleep(1000)
 
         // Asserting the title of the album detail page
-        checkActionBarTitle(ALBUM_NAME_1)
+        checkActionBarTitle(ARTIST_NAME_1)
     }
 }
