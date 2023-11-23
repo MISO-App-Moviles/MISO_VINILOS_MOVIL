@@ -19,10 +19,6 @@ class AlbumRepository(val application: Application) {
     }
 
     suspend fun postAlbum(body: JSONObject): Int {
-        try{
-            return AlbumServiceAdapter.getInstance(application).postAlbum(body)
-        }catch (e: Exception){
-            throw  e
-        }
+        return AlbumServiceAdapter.getInstance(application).postAlbum(body)
     }
 }

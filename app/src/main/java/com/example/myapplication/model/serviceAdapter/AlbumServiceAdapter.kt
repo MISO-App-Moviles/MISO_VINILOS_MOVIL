@@ -58,22 +58,18 @@ class AlbumServiceAdapter constructor(context: Context){
                 cont.resumeWithException(it)
             }))
     }
-    suspend fun postAlbum(body: JSONObject) = suspendCoroutine { cont->
-        try{
-            requestQueue.add(postRequest("albums",
-                body,
-                Response.Listener<JSONObject> { response ->
-                    val idAlbum = response.getInt("id")
-                    cont.resume(idAlbum)
-                },
-                Response.ErrorListener {
-                    cont.resumeWithException(it)
-                }))
-        }catch (e: Exception){
-            Log.e("ASA", e.message.toString())
-            throw  e
-        }
+    suspend fun postAlbum(body: JSONObject) = suspendCoroutine { cont ->
+        requestQueue.add(postRequest("albums",
+            body,
+            Response.Listener<JSONObject> { response ->
+                val idAlbum = response.getInt("id")
+                cont.resume(idAlbum)
+            },
+            Response.ErrorListener {
+                cont.resumeWithException(it)
+            }))
     }
+
 
     private fun postRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
         return  JsonObjectRequest(Request.Method.POST, BASE_URL+path, body, responseListener, errorListener)

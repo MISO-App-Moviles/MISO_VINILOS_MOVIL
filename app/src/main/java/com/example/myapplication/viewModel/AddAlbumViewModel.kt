@@ -35,20 +35,18 @@ class AddAlbumViewModel(application: Application) : AndroidViewModel(application
         get() = _isNetworkErrorShown
 
     fun postAlbumToNetwork(body: JSONObject) {
-        try {
-            viewModelScope.launch(Dispatchers.Default) {
-                withContext(Dispatchers.IO){
-                    var data = albumsRepository.postAlbum(body)
-                    Log.d("ALBUM", data.toString())
+        viewModelScope.launch(Dispatchers.Default) {
+            try {
+                withContext(Dispatchers.IO) {
+                    val data = albumsRepository.postAlbum(body)
                     _albumId.postValue(data)
                 }
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
+            } catch (e: Exception) {
+                Log.d("Error Viewmodel", e.toString())
+                _eventNetworkError.postValue(true)
             }
-        }
-        catch (e:Exception){ //se procesa la excepcion
-            Log.d("Error Viewmodel", e.toString())
-            _eventNetworkError.value = true
         }
     }
 
