@@ -28,7 +28,7 @@ data class PreviewPerformer (
 )
 
 data class PreviewAlbum (
-    var id: Int,
+    var id: Int? = null,
     var name:String? = null,
     var cover: Comparable<*>? = null
 )

@@ -5,6 +5,7 @@ import com.android.volley.VolleyError
 import com.example.myapplication.model.models.Album
 import com.example.myapplication.model.models.AlbumDetail
 import com.example.myapplication.model.serviceAdapter.AlbumServiceAdapter
+import org.json.JSONObject
 
 class AlbumRepository(val application: Application) {
 
@@ -15,5 +16,9 @@ class AlbumRepository(val application: Application) {
 
     suspend fun refreshDetailData(idAlbum: Int) : AlbumDetail {
         return AlbumServiceAdapter.getInstance(application).getAlbumDetail(idAlbum)
+    }
+
+    suspend fun postAlbum(body: JSONObject): Int {
+        return AlbumServiceAdapter.getInstance(application).postAlbum(body)
     }
 }
