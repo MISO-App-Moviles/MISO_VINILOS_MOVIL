@@ -45,34 +45,41 @@ class AddAlbumFragment : Fragment() {
         viewModel = ViewModelProvider(this, AddAlbumViewModel.Factory(activity.application)).get(
             AddAlbumViewModel::class.java)
         binding.submitButton.setOnClickListener {
-            val albumName = binding.editTextName.text
-            Log.d("Tag",  albumName.toString())
-            binding.editTextName.setText("")
+//            Leer inputs
+//            Pasar inputs por función
+            val albumName = binding.editTextName.text.toString()
+            val albumDescription = binding.editTextDescription.text.toString()
+            val albumGenre= binding.editTextGenre.text.toString()
+
+            Log.d("Tag",  validateNonEmpty(albumName).toString())
+            Log.d("Tag",  validateNonEmpty(albumDescription).toString())
+            Log.d("Tag",  validateNonEmpty(albumGenre).toString())
+
+
+
+//            binding.editTextName.setText("")
             //view.findNavController().navigateUp()
             val album = Album(name = albumName.toString(), cover = "https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg", releaseDate = "2011-08-01T00:00:00-05:00", description = "desc", genre = "Salsa", recordLabel = "Sony")
 
-            val jsonObject = JSONObject().apply {
-                put("name", album.name)
-                put("cover", album.cover)
-                put("releaseDate", album.releaseDate)
-                put("description", album.description)
-                put("genre", album.genre)
-                put("recordLabel", album.recordLabel)
-            }
-            try{
-                viewModel.postAlbumToNetwork(jsonObject)
-            }catch (e: Exception){
-                Log.e("EXC", e.message.toString())
-            }
-            viewModel.eventNetworkError.observe(viewLifecycleOwner) { isError ->
-                if (isError) {
-                    Log.d("Error", isError.toString())
-                }
-            }
-            viewModel.albumId.observe(viewLifecycleOwner) { id ->
-                //TODO Agregar toast para mostrar mensaje con id de album creado
-                Log.d("Id", id.toString())
-            }
+//            val jsonObject = JSONObject().apply {
+//                put("name", album.name)
+//                put("cover", album.cover)
+//                put("releaseDate", album.releaseDate)
+//                put("description", album.description)
+//                put("genre", album.genre)
+//                put("recordLabel", album.recordLabel)
+//            }
+//            viewModel.postAlbumToNetwork(jsonObject)
+
+//            viewModel.eventNetworkError.observe(viewLifecycleOwner) { isError ->
+//                if (isError) {
+//                    Log.d("Error", isError.toString())
+//                }
+//            }
+//            viewModel.albumId.observe(viewLifecycleOwner) { id ->
+//                //TODO Agregar toast para mostrar mensaje con id de album creado
+//                Log.d("Id", id.toString())
+//            }
         }
     }
 
@@ -81,6 +88,16 @@ class AddAlbumFragment : Fragment() {
             .load(url)
             .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
             .into(binding.albumPreviewImage);
+    }
+
+    private fun validateAlbum(album:Album): String{
+//
+
+        return ""
+    }
+
+    private fun validateNonEmpty(input: String): Boolean{
+        return input != ""
     }
 
 }
