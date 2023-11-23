@@ -5,7 +5,7 @@ import com.example.myapplication.utils.ImageUtil
 import org.json.JSONObject
 
 data class Album(
-    val albumId:Int,
+    val albumId:Int? = null,
     val name:String,
     val cover: Comparable<*>,
     val releaseDate:String,
