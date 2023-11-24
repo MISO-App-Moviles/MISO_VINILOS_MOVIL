@@ -10,4 +10,17 @@
     <string name="form_release_label">Fecha de lanzamiento</string>
     <string name="form_genre_label">Género</string>
     <string name="form_record_label">Discográfica</string>
+    <string-array name="genre_array">
+        <item>Salsa</item>
+        <item>Classical</item>
+        <item>Rock</item>
+        <item>Folk</item>
+    </string-array>
+    <string-array name="record_array">
+        <item>Sony Music</item>
+        <item>EMI</item>
+        <item>Discos Fuentes</item>
+        <item>Elektra</item>
+        <item>Fania Records</item>
+    </string-array>
 </resources>

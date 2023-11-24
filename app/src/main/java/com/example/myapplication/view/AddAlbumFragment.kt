@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -35,6 +37,10 @@ class AddAlbumFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val genreSpinner: Spinner = binding.genreSpinner
+        buildSpinner(view, genreSpinner, R.array.genre_array)
+        val recordSpinner: Spinner = binding.recordSpinner
+        buildSpinner(view, recordSpinner, R.array.record_array)
         binding.editTextCover.doAfterTextChanged {
             setImage(view, it.toString())
             Log.d("Tag",  it.toString())
@@ -81,6 +87,21 @@ class AddAlbumFragment : Fragment() {
             .load(url)
             .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
             .into(binding.albumPreviewImage);
+    }
+
+    fun buildSpinner(view: View, spinner: Spinner, itemsArray : Int){
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter.createFromResource(
+            view.context,
+            itemsArray,
+            R.layout.spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinner.adapter = adapter
+        }
+//        val selectedSpinnerItem = binding.genreSpinner.selectedItem //Para obtener el valor
     }
 
 }
