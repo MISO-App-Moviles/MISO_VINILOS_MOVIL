@@ -17,7 +17,6 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.myapplication.R
 import com.example.myapplication.databinding.AddAlbumFragmentBinding
 import com.example.myapplication.model.models.Album
-import com.example.myapplication.utils.AlbumUtility
 import com.example.myapplication.utils.DateUtil
 import com.example.myapplication.utils.ImageUtil
 import com.example.myapplication.utils.StringUtil
@@ -45,7 +44,9 @@ class AddAlbumFragment : Fragment() {
         buildSpinner(view, recordSpinner, R.array.record_array)
         binding.editTextCover.doAfterTextChanged {
             setImage(view, it.toString())
-            Log.d("Tag",  it.toString())
+        }
+        binding.cancelButton.setOnClickListener {
+            clearForm()
         }
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
@@ -58,16 +59,16 @@ class AddAlbumFragment : Fragment() {
         }
 
         //errores
-        viewModel.eventNetworkError.observe(viewLifecycleOwner) { isError ->
-            if (isError) {
-                val toast = Toast.makeText(requireContext(),  "Ha ocurrido un error: " + isError.toString(), Toast.LENGTH_LONG) // in Activity
+        viewModel.eventNetworkError.observe(viewLifecycleOwner) { error ->
+            if (error != "") {
+                val toast = Toast.makeText(requireContext(),  "Ha ocurrido un error: " + error.toString(), Toast.LENGTH_LONG) // in Activity
                 toast.show()
             }
         }
         viewModel.albumId.observe(viewLifecycleOwner) { id ->
             val toast = Toast.makeText(requireContext(), "Se ha creado un album con el id " + id.toString(), Toast.LENGTH_LONG) // in Activity
             toast.show()
-            //Limpiar los campos
+            clearForm()
         }
     }
 
@@ -122,18 +123,23 @@ class AddAlbumFragment : Fragment() {
     }
 
     fun buildSpinner(view: View, spinner: Spinner, itemsArray : Int){
-        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter.createFromResource(
             view.context,
             itemsArray,
             R.layout.spinner_item
         ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
-            // Apply the adapter to the spinner
             spinner.adapter = adapter
         }
-//        val selectedSpinnerItem = binding.genreSpinner.selectedItem //Para obtener el valor
+    }
+
+    fun clearForm(){
+        binding.editTextName.setText("")
+        binding.editTextCover.setText("")
+        binding.editTextDate.setText("")
+        binding.editTextDescription.setText("")
+        binding.genreSpinner.setSelection(0)
+        binding.recordSpinner.setSelection(0)
     }
 
 }

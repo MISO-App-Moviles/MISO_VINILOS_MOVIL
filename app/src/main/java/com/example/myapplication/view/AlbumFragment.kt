@@ -55,6 +55,8 @@ class AlbumFragment : Fragment() {
         }
         viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(
             AlbumViewModel::class.java)
+        viewModel.refreshDataFromNetwork()
+        Log.d("TAG", "Hola mundo desde activity created")
         viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
             it.apply {
                 viewModelAdapter!!.albums = this
@@ -75,5 +77,10 @@ class AlbumFragment : Fragment() {
             Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        Log.d("TAG", "Hola mundo")
     }
 }

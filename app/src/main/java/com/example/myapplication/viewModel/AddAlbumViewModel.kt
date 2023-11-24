@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.android.volley.ClientError
 import com.example.myapplication.model.models.AlbumDetail
 import com.example.myapplication.model.repository.AlbumRepository
 import kotlinx.coroutines.Dispatchers
@@ -24,9 +25,9 @@ class AddAlbumViewModel(application: Application) : AndroidViewModel(application
     val albumId: LiveData<Int>
         get() = _albumId
 
-    private var _eventNetworkError = MutableLiveData<Boolean>(false)
+    private var _eventNetworkError = MutableLiveData<String>("")
 
-    val eventNetworkError: LiveData<Boolean>
+    val eventNetworkError: LiveData<String>
         get() = _eventNetworkError
 
     private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
@@ -41,11 +42,11 @@ class AddAlbumViewModel(application: Application) : AndroidViewModel(application
                     val data = albumsRepository.postAlbum(body)
                     _albumId.postValue(data)
                 }
-                _eventNetworkError.postValue(false)
+                _eventNetworkError.postValue("")
                 _isNetworkErrorShown.postValue(false)
-            } catch (e: Exception) {
-                Log.d("Error Viewmodel", e.toString())
-                _eventNetworkError.postValue(true)
+            } catch (e: ClientError) {
+                var errorMessage = JSONObject(String(e.networkResponse.data))
+                _eventNetworkError.postValue(errorMessage?.optString("message"))
             }
         }
     }
