@@ -22,6 +22,7 @@
                 android:layout_gravity="center"
                 android:background="@color/material_dynamic_neutral80"
                 app:shapeAppearanceOverlay="@style/circularImageShape"
+                app:srcCompat="@drawable/vynil_image"
                 android:scaleType="centerCrop"/>
 
             <TextView

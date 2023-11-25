@@ -82,7 +82,7 @@
     <fragment
         android:id="@+id/addTrackToAlbum"
         android:name="com.example.myapplication.view.AddTrackToAlbumFragment"
-        android:label="AddTrackToAlbum" >
+        android:label="Nueva cancion" >
         <argument
             android:name="albumId"
             app:argType="integer" />
