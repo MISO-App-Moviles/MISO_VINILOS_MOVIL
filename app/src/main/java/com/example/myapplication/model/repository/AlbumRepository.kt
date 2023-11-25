@@ -21,4 +21,8 @@ class AlbumRepository(val application: Application) {
     suspend fun postAlbum(body: JSONObject): Int {
         return AlbumServiceAdapter.getInstance(application).postAlbum(body)
     }
+
+    suspend fun addTrackToAlbum(idAlbum: Int, body: JSONObject): Int {
+        return AlbumServiceAdapter.getInstance(application).addTrackToAlbum(idAlbum, body)
+    }
 }

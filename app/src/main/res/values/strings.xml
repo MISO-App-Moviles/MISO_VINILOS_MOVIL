@@ -10,6 +10,8 @@
     <string name="form_release_label">Fecha de lanzamiento</string>
     <string name="form_genre_label">Género</string>
     <string name="form_record_label">Discográfica</string>
+    <string name="form_duration_label">Duración</string>
+
     <string-array name="genre_array">
         <item>Salsa</item>
         <item>Classical</item>
@@ -23,4 +25,6 @@
         <item>Elektra</item>
         <item>Fania Records</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -70,6 +70,18 @@ class AlbumServiceAdapter constructor(context: Context){
             }))
     }
 
+    suspend fun addTrackToAlbum(idAlbum: Int,body: JSONObject) = suspendCoroutine { cont ->
+        requestQueue.add(postRequest("albums/$idAlbum/tracks",
+            body,
+            Response.Listener<JSONObject> { response ->
+                val idTrack = response.getInt("id")
+                cont.resume(idTrack)
+            },
+            Response.ErrorListener {
+                cont.resumeWithException(it)
+            }))
+    }
+
 
     private fun postRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
         return  JsonObjectRequest(Request.Method.POST, BASE_URL+path, body, responseListener, errorListener)
