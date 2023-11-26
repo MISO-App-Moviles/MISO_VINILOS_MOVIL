@@ -4,11 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.databinding.AlbumPreviewItemBinding
 import com.example.myapplication.model.models.PreviewAlbum
+import com.example.myapplication.view.CollectorDetailFragmentDirections
 
 class AlbumPreviewAdapter: RecyclerView.Adapter<AlbumPreviewAdapter.AlbumPreviewViewHolder>() {
         class AlbumPreviewViewHolder(val viewDataBinding: AlbumPreviewItemBinding) :
@@ -41,11 +43,14 @@ class AlbumPreviewAdapter: RecyclerView.Adapter<AlbumPreviewAdapter.AlbumPreview
                 .load(albums[position].cover)
                 .into(holder.viewDataBinding.albumImage);
         }
-       // holder.viewDataBinding.root.setOnClickListener {
-       //  val action = CollectorDetailFragmentDirections.actionCollectorDetailFragmentToAlbumDetailFragment(albums[position].id)
-       // Navigate using that action
-       //        holder.viewDataBinding.root.findNavController().navigate(action)
-       //  }
+        holder.viewDataBinding.root.setOnClickListener {
+            val fragment = CollectorDetailFragmentDirections
+            val action = albums[position].id?.let { it1 -> fragment.actionToAlbumDetailFragment(it1) }
+            // Navigate using that action
+            if (action != null) {
+                holder.viewDataBinding.root.findNavController().navigate(action)
+            }
+        }
     }
 
     override fun getItemCount(): Int {

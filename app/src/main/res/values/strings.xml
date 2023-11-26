@@ -3,4 +3,28 @@
     <string name="title_artist">Artistas</string>
     <string name="title_collectors">Coleccionistas</string>
     <string name="title_album_list">Albums</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="form_name_label">Nombre</string>
+    <string name="form_description_label">Descripción</string>
+    <string name="form_cover_label">Cover</string>
+    <string name="form_release_label">Fecha de lanzamiento</string>
+    <string name="form_genre_label">Género</string>
+    <string name="form_record_label">Discográfica</string>
+    <string name="form_duration_label">Duración</string>
+
+    <string-array name="genre_array">
+        <item>Salsa</item>
+        <item>Classical</item>
+        <item>Rock</item>
+        <item>Folk</item>
+    </string-array>
+    <string-array name="record_array">
+        <item>Sony Music</item>
+        <item>EMI</item>
+        <item>Discos Fuentes</item>
+        <item>Elektra</item>
+        <item>Fania Records</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

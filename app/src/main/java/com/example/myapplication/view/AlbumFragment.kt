@@ -2,14 +2,17 @@ package com.example.myapplication.view
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.R
 import com.example.myapplication.databinding.AlbumFragmentBinding
 import com.example.myapplication.model.models.Album
 import com.example.myapplication.view.adapters.AlbumAdapter
@@ -37,6 +40,12 @@ class AlbumFragment : Fragment() {
         recyclerView = binding.albumRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+        binding.addAlbumButton.setOnClickListener {
+            val action = AlbumFragmentDirections.actionNavigationAlbumListToAddAlbumFragment()
+            // Navigate using that action
+            view.findNavController().navigate(action)
+
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -46,6 +55,8 @@ class AlbumFragment : Fragment() {
         }
         viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(
             AlbumViewModel::class.java)
+        viewModel.refreshDataFromNetwork()
+        Log.d("TAG", "Hola mundo desde activity created")
         viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
             it.apply {
                 viewModelAdapter!!.albums = this
@@ -66,5 +77,10 @@ class AlbumFragment : Fragment() {
             Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        Log.d("TAG", "Hola mundo")
     }
 }
