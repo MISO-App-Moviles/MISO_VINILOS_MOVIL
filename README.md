@@ -61,10 +61,3 @@ En las siguientes secciones encontraras los archivos APK distribuidos por iterac
 - Iteración 3
   > - enlace de descarga del archivo .apk
   
-![image](https://github.com/MISO-App-Moviles/MISO_VINILOS_MOVIL/assets/124009412/1e1c7416-d58d-4b77-8251-d455772bd5f2)
-- Ya deberia poder ver la aplicacion en ejecucion. 
-## Iteración 1
-
-## Iteración 2
-
-## Iteración 3
