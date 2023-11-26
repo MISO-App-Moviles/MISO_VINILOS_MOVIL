@@ -13,7 +13,7 @@
         android:paddingTop="30dp"
         android:paddingBottom="60dp">
         <LinearLayout
-            android:layout_width="370dp"
+            android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -23,23 +23,25 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
-                android:background="@color/material_dynamic_neutral80"
+                android:background="#C7C6CA"
                 app:shapeAppearanceOverlay="@style/circularImageShape"
                 android:scaleType="centerCrop"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="350dp"
                 android:layout_height="match_parent"
                 android:textStyle="bold"
+                android:labelFor="@id/editTextCover"
                 android:textColor="@color/title"
                 android:layout_marginTop="15dp"
+                android:singleLine="true"
                 android:text="@string/form_cover_label" />
 
             <EditText
                 android:id="@+id/editTextCover"
                 android:textColor="@color/text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:background="@drawable/edit_text_style"
                 android:paddingHorizontal="10dp"
@@ -50,6 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textStyle="bold"
+                android:labelFor="@id/editTextName"
                 android:textColor="@color/title"
                 android:layout_marginTop="15dp"
                 android:text="@string/form_name_label" />
@@ -58,7 +61,7 @@
                 android:id="@+id/editTextName"
                 android:textColor="@color/text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="48dp"
                 android:background="@drawable/edit_text_style"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="5dp"
@@ -68,6 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textStyle="bold"
+                android:labelFor="@id/editTextDescription"
                 android:textColor="@color/title"
                 android:layout_marginTop="15dp"
                 android:text="@string/form_description_label" />
@@ -89,6 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textStyle="bold"
+                android:labelFor="@id/genreSpinner"
                 android:textColor="@color/title"
                 android:layout_marginTop="15dp"
                 android:text="@string/form_genre_label" />
@@ -97,7 +102,7 @@
                 android:id="@+id/genreSpinner"
                 android:textColor="@color/text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:background="@drawable/edit_text_style"
                 android:paddingHorizontal="10dp"
@@ -108,6 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textStyle="bold"
+                android:labelFor="@id/editTextDate"
                 android:textColor="@color/title"
                 android:layout_marginTop="15dp"
                 android:text="@string/form_release_label" />
@@ -116,8 +122,9 @@
                 android:id="@+id/editTextDate"
                 android:textColor="@color/text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="48dp"
                 android:ems="10"
+                android:singleLine="true"
                 android:inputType="date"
                 android:background="@drawable/edit_text_style"
                 android:paddingHorizontal="10dp"
@@ -130,7 +137,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textStyle="bold"
+                android:labelFor="@id/recordSpinner"
                 android:textColor="@color/title"
+                android:singleLine="true"
                 android:layout_marginTop="15dp"
                 android:text="@string/form_record_label" />
 
@@ -138,11 +147,12 @@
                 android:id="@+id/recordSpinner"
                 android:textColor="@color/text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:background="@drawable/edit_text_style"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="5dp"
+                android:singleLine="true"
                 android:inputType="text" />
 
             <LinearLayout

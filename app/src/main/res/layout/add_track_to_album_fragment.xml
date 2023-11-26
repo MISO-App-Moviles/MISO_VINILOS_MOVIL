@@ -10,7 +10,7 @@
         android:paddingTop="30dp"
         android:paddingBottom="60dp">
         <LinearLayout
-            android:layout_width="370dp"
+            android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -26,9 +26,10 @@
                 android:scaleType="centerCrop"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="350dp"
                 android:layout_height="match_parent"
                 android:textStyle="bold"
+                android:labelFor="@id/editTextName"
                 android:textColor="@color/title"
                 android:layout_marginTop="15dp"
                 android:text="@string/form_name_label" />
@@ -37,7 +38,7 @@
                 android:id="@+id/editTextName"
                 android:textColor="@color/text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:background="@drawable/edit_text_style"
                 android:paddingHorizontal="10dp"
@@ -48,6 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textStyle="bold"
+                android:labelFor="@id/editTextDuration"
                 android:textColor="@color/title"
                 android:layout_marginTop="15dp"
                 android:text="@string/form_duration_label" />
@@ -56,7 +58,7 @@
                 android:id="@+id/editTextDuration"
                 android:textColor="@color/text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="48dp"
                 android:background="@drawable/edit_text_style"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="5dp"
