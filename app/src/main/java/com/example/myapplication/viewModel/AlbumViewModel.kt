@@ -8,12 +8,18 @@ import com.example.myapplication.model.repository.AlbumRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
 
 class AlbumViewModel(application: Application) : AndroidViewModel(application) {
 
     private val albumsRepository = AlbumRepository(application)
 
     private val _albums = MutableLiveData<List<Album>>()
+
+    private val _albumId = MutableLiveData<Int>()
+
+    val albumId: LiveData<Int>
+        get() = _albumId
 
     val albums: LiveData<List<Album>>
         get() = _albums
@@ -32,7 +38,7 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
         refreshDataFromNetwork()
     }
 
-    private fun refreshDataFromNetwork() {
+    fun refreshDataFromNetwork() {
         try {
             viewModelScope.launch(Dispatchers.Default) {
                 withContext(Dispatchers.IO){

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_album_list_to_albumDetailFragment"
             app:destination="@id/albumDetailFragment" />
+        <action
+            android:id="@+id/action_navigation_album_list_to_addAlbumFragment"
+            app:destination="@id/addAlbumFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumDetailFragment"
@@ -20,6 +23,9 @@
         tools:layout="@layout/album_detail_fragment" >
         <argument android:name="albumId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_albumDetailFragment_to_addTrackToAlbum"
+            app:destination="@id/addTrackToAlbum" />
     </fragment>
 
     <fragment
@@ -67,6 +73,19 @@
         <action
             android:id="@+id/action_to_albumDetailFragment"
             app:destination="@id/albumDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAlbumFragment"
+        android:name="com.example.myapplication.view.AddAlbumFragment"
+        android:label="Nuevo album"
+        tools:layout="@layout/add_album_fragment" />
+    <fragment
+        android:id="@+id/addTrackToAlbum"
+        android:name="com.example.myapplication.view.AddTrackToAlbumFragment"
+        android:label="Nueva cancion" >
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

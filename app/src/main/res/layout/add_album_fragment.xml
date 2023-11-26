@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.AddAlbumFragment">
+
+    <data>
+        <variable name="album" type="com.example.myapplication.model.models.Album" />
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="30dp"
+        android:paddingBottom="60dp">
+        <LinearLayout
+            android:layout_width="370dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:elevation="5dp"
+                android:id="@+id/albumPreviewImage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:background="@color/material_dynamic_neutral80"
+                app:shapeAppearanceOverlay="@style/circularImageShape"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textStyle="bold"
+                android:textColor="@color/title"
+                android:layout_marginTop="15dp"
+                android:text="@string/form_cover_label" />
+
+            <EditText
+                android:id="@+id/editTextCover"
+                android:textColor="@color/text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:background="@drawable/edit_text_style"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textStyle="bold"
+                android:textColor="@color/title"
+                android:layout_marginTop="15dp"
+                android:text="@string/form_name_label" />
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:textColor="@color/text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_text_style"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:ems="10"
+                android:inputType="text" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textStyle="bold"
+                android:textColor="@color/title"
+                android:layout_marginTop="15dp"
+                android:text="@string/form_description_label" />
+
+            <EditText
+                android:id="@+id/editTextDescription"
+                android:textColor="@color/text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:lines="3"
+                android:background="@drawable/edit_text_style"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:shadowRadius="10"
+                android:inputType="textMultiLine" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textStyle="bold"
+                android:textColor="@color/title"
+                android:layout_marginTop="15dp"
+                android:text="@string/form_genre_label" />
+
+            <Spinner
+                android:id="@+id/genreSpinner"
+                android:textColor="@color/text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:background="@drawable/edit_text_style"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textStyle="bold"
+                android:textColor="@color/title"
+                android:layout_marginTop="15dp"
+                android:text="@string/form_release_label" />
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/editTextDate"
+                android:textColor="@color/text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="date"
+                android:background="@drawable/edit_text_style"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:hint="dd/mm/yyyy"
+                android:textColorHint="@color/text"
+                app:mask="##/##/####" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textStyle="bold"
+                android:textColor="@color/title"
+                android:layout_marginTop="15dp"
+                android:text="@string/form_record_label" />
+
+            <Spinner
+                android:id="@+id/recordSpinner"
+                android:textColor="@color/text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:background="@drawable/edit_text_style"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:inputType="text" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/cancelButton"
+                    android:layout_width="160dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/material_dynamic_neutral70"
+                    android:textColor="@color/white"
+                    android:text="Cancelar" />
+                <Button
+                    android:id="@+id/submitButton"
+                    android:layout_width="160dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/white"
+                    android:text="Añadir" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

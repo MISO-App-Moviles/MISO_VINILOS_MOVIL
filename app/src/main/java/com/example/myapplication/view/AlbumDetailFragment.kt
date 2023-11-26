@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -45,6 +46,12 @@ class AlbumDetailFragment : Fragment() {
         recyclerView = binding.trackRv
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = trackAdapter
+        binding.addTrackButton.setOnClickListener {
+            val action = AlbumDetailFragmentDirections.actionAlbumDetailFragmentToAddTrackToAlbum(albumId!!)
+            // Navigate using that action
+            view.findNavController().navigate(action)
+
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -54,6 +61,7 @@ class AlbumDetailFragment : Fragment() {
         }
         viewModel = ViewModelProvider(this, AlbumDetailViewModel.Factory(activity.application, albumId!!)).get(
             AlbumDetailViewModel::class.java)
+        viewModel.refreshTracksFromNetwork()
         getAlbumDetail(activity)
         getAlbumTracks(activity)
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
@@ -71,6 +79,8 @@ class AlbumDetailFragment : Fragment() {
         viewModel.tracks.observe(viewLifecycleOwner, Observer<List<Track>> {
             if(it.count() == 0){
                 binding.tracksLabel.visibility = View.GONE
+            } else{
+                binding.tracksLabel.visibility = View.VISIBLE
             }
             it.apply {
                 trackAdapter!!.tracks = this

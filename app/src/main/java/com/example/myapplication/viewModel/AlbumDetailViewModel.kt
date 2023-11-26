@@ -66,7 +66,7 @@ class AlbumDetailViewModel(application: Application, albumId: Int) : AndroidView
         }
     }
 
-    private fun refreshTracksFromNetwork() {
+    fun refreshTracksFromNetwork() {
         try {
             viewModelScope.launch(Dispatchers.Default) {
                 withContext(Dispatchers.IO){

@@ -1,10 +1,12 @@
 package com.example.myapplication.model.serviceAdapter
 
 import android.content.Context
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.VolleyError
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.myapplication.model.models.Album
@@ -46,7 +48,7 @@ class AlbumServiceAdapter constructor(context: Context){
             }))
     }
 
-    suspend fun getAlbumDetail(idAlbum: Int) = suspendCoroutine<AlbumDetail>{cont->
+    suspend fun getAlbumDetail(idAlbum: Int) = suspendCoroutine { cont->
         requestQueue.add(getRequest("albums/$idAlbum",
             Response.Listener<String>{ response ->
                 val albumDetail = AlbumDetail(JSONObject(response))
@@ -55,6 +57,34 @@ class AlbumServiceAdapter constructor(context: Context){
             Response.ErrorListener{
                 cont.resumeWithException(it)
             }))
+    }
+    suspend fun postAlbum(body: JSONObject) = suspendCoroutine { cont ->
+        requestQueue.add(postRequest("albums",
+            body,
+            Response.Listener<JSONObject> { response ->
+                val idAlbum = response.getInt("id")
+                cont.resume(idAlbum)
+            },
+            Response.ErrorListener {
+                cont.resumeWithException(it)
+            }))
+    }
+
+    suspend fun addTrackToAlbum(idAlbum: Int,body: JSONObject) = suspendCoroutine { cont ->
+        requestQueue.add(postRequest("albums/$idAlbum/tracks",
+            body,
+            Response.Listener<JSONObject> { response ->
+                val idTrack = response.getInt("id")
+                cont.resume(idTrack)
+            },
+            Response.ErrorListener {
+                cont.resumeWithException(it)
+            }))
+    }
+
+
+    private fun postRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
+        return  JsonObjectRequest(Request.Method.POST, BASE_URL+path, body, responseListener, errorListener)
     }
 
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
